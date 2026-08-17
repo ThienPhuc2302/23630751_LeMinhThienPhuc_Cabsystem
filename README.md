@@ -106,7 +106,6 @@ Trong phạm vi MVP với thời gian triển khai **7 tuần**, hệ thống CA
 | **BR32** | Bảo mật và phân quyền | Hệ thống phải kiểm soát quyền truy cập dựa trên vai trò và đảm bảo nhân viên chỉ thực hiện được các chức năng được cấp quyền. |
 | **BR33** | Bảo mật và phân quyền | Hệ thống phải bảo vệ thông tin cá nhân, thông tin phương tiện, dữ liệu vị trí và dữ liệu giao dịch khỏi truy cập trái phép. |
 | **BR34** | Bảo mật và phân quyền | Hệ thống phải lưu vết các thao tác quan trọng để phục vụ kiểm tra, đối soát và xử lý sự cố. |
-| **BR35** | Khả năng mở rộng | Hệ thống phải được thiết kế đủ linh hoạt để có thể mở rộng các loại dịch vụ, phương thức thanh toán và kênh thông báo trong tương lai mà hạn chế ảnh hưởng đến các chức năng hiện có. |
 
 ## 6. Functional Requirements
 
@@ -264,11 +263,3 @@ Functional Requirements (FR) được phân rã từ 35 Business Requirements (B
 | **FR96** | BR33 | Hệ thống bảo vệ dữ liệu giao dịch và thông tin liên quan đến thanh toán. |
 | **FR97** | BR34 | Hệ thống ghi nhận các thao tác quan trọng của người dùng và nhân viên vận hành. |
 | **FR98** | BR34 | Hệ thống cho phép người dùng có quyền tra cứu lịch sử các thao tác quan trọng phục vụ kiểm tra và xử lý sự cố. |
-
-## 6.12. Khả năng mở rộng
-
-| FR ID | BR ID | Functional Requirement |
-|:---:|:---:|:---|
-| **FR99** | BR35 | Hệ thống cho phép bổ sung loại dịch vụ mới mà hạn chế ảnh hưởng đến các chức năng hiện có. |
-| **FR100** | BR35 | Hệ thống cho phép bổ sung phương thức thanh toán mới thông qua cơ chế tích hợp phù hợp. |
-| **FR101** | BR35 | Hệ thống cho phép bổ sung hoặc thay đổi kênh thông báo mà hạn chế thay đổi các nghiệp vụ hiện có. |
