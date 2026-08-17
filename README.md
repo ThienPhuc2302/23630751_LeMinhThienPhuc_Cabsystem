@@ -12,6 +12,4 @@
 | Nhân viên vận hành | Quản lý khách hàng, tài xế, phương tiện, chuyến đi và xử lý sự cố |
 | Nhà cung cấp thanh toán | Cung cấp dịch vụ và xử lý các giao dịch thanh toán điện tử |
 | Bộ phận tài chính / kế toán | Quản lý doanh thu, giao dịch, đối soát và báo cáo tài chính |
-| Đội ngũ kỹ thuật | Phân tích, xây dựng, triển khai và bảo trì hệ thống |
-| Bộ phận chăm sóc khách hàng | Hỗ trợ khách hàng, tiếp nhận và xử lý khiếu nại |
 | Nhà cung cấp bản đồ / định vị | Cung cấp dữ liệu vị trí, bản đồ, khoảng cách và hỗ trợ xác định tài xế |
