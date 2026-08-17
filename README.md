@@ -66,3 +66,57 @@ Trong thời gian 7 tuần, dự án tập trung xây dựng các chức năng c
 | 9 | **Quản lý vận hành** | Nhân viên vận hành theo dõi và xử lý khách hàng, tài xế, phương tiện và các chuyến đi đang diễn ra. |
 | 10 | **Lịch sử và đánh giá** | Lưu lịch sử chuyến đi và cho phép khách hàng đánh giá tài xế sau khi hoàn thành chuyến. |
 | 11 | **Bảo mật và phân quyền** | Xác thực người dùng, phân quyền chức năng quản trị và bảo vệ dữ liệu cơ bản. |
+## 6. Business Requirements
+
+Dựa trên phạm vi dự án và các module MVP đã xác định, hệ thống CAB cần đáp ứng các yêu cầu nghiệp vụ sau:
+
+| Mã | Business Requirement | Mô tả |
+|:---|:---|:---|
+| **BR01** | **Quản lý tài khoản khách hàng** | Hệ thống cho phép khách hàng đăng ký, đăng nhập và xác thực tài khoản để sử dụng các dịch vụ của hệ thống. |
+| **BR02** | **Quản lý thông tin khách hàng** | Hệ thống cho phép khách hàng quản lý và cập nhật thông tin cá nhân phục vụ quá trình sử dụng dịch vụ. |
+| **BR03** | **Quản lý trạng thái khách hàng** | Hệ thống quản lý trạng thái hoạt động của tài khoản khách hàng để phục vụ việc kiểm soát sử dụng dịch vụ. |
+| **BR04** | **Quản lý lịch sử khách hàng** | Hệ thống lưu trữ và cho phép khách hàng tra cứu lịch sử các chuyến đi đã thực hiện. |
+| **BR05** | **Quản lý tài khoản tài xế** | Hệ thống cho phép tài xế đăng ký hoặc nhân viên vận hành tạo và quản lý tài khoản tài xế. |
+| **BR06** | **Quản lý hồ sơ và phương tiện tài xế** | Hệ thống cho phép quản lý thông tin hồ sơ tài xế và thông tin phương tiện được sử dụng để cung cấp dịch vụ. |
+| **BR07** | **Quản lý trạng thái tài xế** | Hệ thống cho phép tài xế cập nhật trạng thái hoạt động và khả năng sẵn sàng nhận chuyến. |
+| **BR08** | **Quản lý tài xế và phương tiện** | Hệ thống hỗ trợ nhân viên vận hành tra cứu và quản lý thông tin, trạng thái tài xế và phương tiện. |
+| **BR09** | **Tạo yêu cầu đặt xe** | Hệ thống cho phép khách hàng tạo yêu cầu đặt xe bằng cách cung cấp điểm đón, điểm đến và lựa chọn loại xe hoặc dịch vụ. |
+| **BR10** | **Xác nhận yêu cầu đặt xe** | Hệ thống kiểm tra và xác nhận các thông tin cần thiết trước khi tiếp nhận yêu cầu đặt xe. |
+| **BR11** | **Quản lý trạng thái yêu cầu đặt xe** | Hệ thống quản lý trạng thái yêu cầu đặt xe từ khi được tạo cho đến khi được phân công hoặc kết thúc. |
+| **BR12** | **Tiếp nhận yêu cầu đặt xe** | Hệ thống thông báo cho khách hàng khi yêu cầu đặt xe được tiếp nhận thành công. |
+| **BR13** | **Tự động tìm kiếm tài xế** | Hệ thống tự động tìm kiếm tài xế phù hợp dựa trên vị trí, trạng thái sẵn sàng và loại xe hoặc dịch vụ. |
+| **BR14** | **Ưu tiên tài xế phù hợp** | Hệ thống hỗ trợ cơ chế ưu tiên tài xế phù hợp và gần khách hàng theo các tiêu chí vận hành của doanh nghiệp. |
+| **BR15** | **Phân công chuyến cho tài xế** | Hệ thống gửi yêu cầu nhận chuyến đến tài xế phù hợp và ghi nhận việc tài xế chấp nhận hoặc từ chối chuyến. |
+| **BR16** | **Xử lý tài xế không nhận chuyến** | Hệ thống tiếp tục tìm tài xế khác khi tài xế được đề xuất từ chối hoặc không phản hồi trong thời gian quy định. |
+| **BR17** | **Thông báo kết quả tìm tài xế** | Hệ thống thông báo cho khách hàng khi tìm được tài xế hoặc khi không tìm được tài xế phù hợp. |
+| **BR18** | **Tiếp nhận chuyến đi** | Hệ thống cho phép tài xế tiếp nhận và xem thông tin chuyến được phân công. |
+| **BR19** | **Quản lý trạng thái chuyến đi** | Hệ thống quản lý và cập nhật trạng thái chuyến đi trong suốt quá trình thực hiện. |
+| **BR20** | **Cập nhật quá trình thực hiện chuyến** | Hệ thống hỗ trợ ghi nhận các trạng thái chính của chuyến gồm đã đến điểm đón, đã đón khách, đang di chuyển và hoàn thành. |
+| **BR21** | **Lưu trữ thông tin chuyến đi** | Hệ thống lưu trữ thông tin và lịch sử trạng thái của chuyến đi để phục vụ theo dõi, thanh toán và tra cứu. |
+| **BR22** | **Theo dõi trạng thái chuyến đi** | Hệ thống cho phép khách hàng theo dõi trạng thái hiện tại của chuyến đi trong quá trình thực hiện. |
+| **BR23** | **Hiển thị thông tin tài xế và phương tiện** | Hệ thống cung cấp cho khách hàng thông tin tài xế và phương tiện sau khi chuyến được phân công. |
+| **BR24** | **Theo dõi vị trí tài xế** | Hệ thống ghi nhận và cung cấp thông tin vị trí của tài xế để hỗ trợ khách hàng theo dõi chuyến đi. |
+| **BR25** | **Dự kiến thời gian tài xế đến** | Hệ thống cung cấp thời gian dự kiến tài xế đến điểm đón và cập nhật thông tin khi có thay đổi. |
+| **BR26** | **Tính cước chuyến đi** | Hệ thống xác định số tiền khách hàng phải trả dựa trên loại dịch vụ và thông tin chuyến đi theo chính sách của doanh nghiệp. |
+| **BR27** | **Hỗ trợ phương thức thanh toán** | Hệ thống hỗ trợ khách hàng thanh toán bằng tiền mặt hoặc phương thức thanh toán điện tử. |
+| **BR28** | **Tích hợp thanh toán điện tử** | Hệ thống tích hợp với nhà cung cấp thanh toán bên ngoài để xử lý giao dịch điện tử mà không lưu trực tiếp thông tin nhạy cảm của khách hàng. |
+| **BR29** | **Quản lý trạng thái thanh toán** | Hệ thống ghi nhận và quản lý trạng thái của giao dịch thanh toán. |
+| **BR30** | **Xử lý thanh toán thất bại** | Hệ thống thông báo cho khách hàng về kết quả thanh toán và hỗ trợ xử lý lại giao dịch khi thanh toán điện tử thất bại theo chính sách doanh nghiệp. |
+| **BR31** | **Quản lý thông tin giao dịch** | Hệ thống lưu trữ thông tin giao dịch cần thiết để phục vụ tra cứu và đối soát. |
+| **BR32** | **Thông báo trạng thái đặt xe và chuyến đi** | Hệ thống thông báo cho khách hàng về các sự kiện quan trọng như tiếp nhận yêu cầu, tài xế nhận chuyến, tài xế đến điểm đón và hoàn thành chuyến. |
+| **BR33** | **Thông báo kết quả thanh toán** | Hệ thống thông báo cho khách hàng về kết quả của giao dịch thanh toán. |
+| **BR34** | **Thông báo cho tài xế** | Hệ thống thông báo cho tài xế về chuyến mới và những thay đổi quan trọng liên quan đến chuyến đang thực hiện. |
+| **BR35** | **Mở rộng kênh thông báo** | Hệ thống hỗ trợ mở rộng hoặc bổ sung các kênh thông báo trong tương lai mà không ảnh hưởng lớn đến các nghiệp vụ hiện có. |
+| **BR36** | **Quản lý dữ liệu vận hành** | Hệ thống cung cấp cho nhân viên vận hành khả năng tra cứu và quản lý thông tin khách hàng, tài xế và phương tiện. |
+| **BR37** | **Theo dõi chuyến đang diễn ra** | Hệ thống cho phép nhân viên vận hành theo dõi các chuyến đang diễn ra và trạng thái hiện tại của từng chuyến. |
+| **BR38** | **Theo dõi trạng thái tài xế** | Hệ thống cho phép nhân viên vận hành theo dõi trạng thái hoạt động và khả năng nhận chuyến của tài xế. |
+| **BR39** | **Xử lý chuyến đi bất thường** | Hệ thống hỗ trợ nhân viên vận hành tra cứu và xử lý các trường hợp chuyến đi phát sinh lỗi hoặc bất thường. |
+| **BR40** | **Tra cứu giao dịch** | Hệ thống cho phép nhân viên vận hành tra cứu lịch sử giao dịch phục vụ công tác hỗ trợ và kiểm tra. |
+| **BR41** | **Lưu trữ lịch sử chuyến đi** | Hệ thống lưu trữ và cung cấp thông tin lịch sử các chuyến đi đã thực hiện. |
+| **BR42** | **Tra cứu chi tiết chuyến đi** | Hệ thống cho phép khách hàng xem thông tin chi tiết của chuyến đi và số tiền phải trả hoặc đã thanh toán. |
+| **BR43** | **Đánh giá tài xế** | Hệ thống cho phép khách hàng đánh giá tài xế sau khi chuyến đi hoàn thành. |
+| **BR44** | **Quản lý đánh giá** | Hệ thống lưu trữ kết quả đánh giá và liên kết đánh giá với chuyến đi và tài xế tương ứng. |
+| **BR45** | **Xác thực người dùng** | Hệ thống yêu cầu khách hàng và tài xế xác thực trước khi sử dụng các chức năng yêu cầu tài khoản. |
+| **BR46** | **Phân quyền người dùng** | Hệ thống kiểm soát quyền truy cập dựa trên vai trò và đảm bảo nhân viên vận hành chỉ thực hiện được các chức năng được phân quyền. |
+| **BR47** | **Bảo vệ dữ liệu** | Hệ thống bảo vệ thông tin cá nhân, thông tin phương tiện, dữ liệu vị trí và dữ liệu giao dịch khỏi việc truy cập hoặc sử dụng trái phép. |
+| **BR48** | **Lưu vết hoạt động** | Hệ thống lưu vết các thao tác quản trị và các thao tác quan trọng để phục vụ kiểm tra, đối soát và xử lý sự cố. |
