@@ -13,3 +13,37 @@
 | Nhà cung cấp thanh toán | Cung cấp dịch vụ và xử lý các giao dịch thanh toán điện tử |
 | Bộ phận tài chính / kế toán | Quản lý doanh thu, giao dịch, đối soát và báo cáo tài chính |
 | Nhà cung cấp bản đồ / định vị | Cung cấp dữ liệu vị trí, bản đồ, khoảng cách và hỗ trợ xác định tài xế |
+## Sơ đồ Stakeholder
+
+```mermaid
+flowchart LR
+    A["Ban lãnh đạo<br/>Định hướng, phê duyệt và đưa ra quyết định quan trọng"]
+
+    B["Khách hàng<br/>Đăng ký, đặt xe, theo dõi chuyến, thanh toán và đánh giá tài xế"]
+
+    C["Tài xế<br/>Nhận chuyến, thực hiện chuyến và cập nhật trạng thái"]
+
+    D["Nhân viên vận hành<br/>Quản lý khách hàng, tài xế, phương tiện và chuyến đi"]
+
+    E["Nhà cung cấp thanh toán<br/>Xử lý các giao dịch thanh toán điện tử"]
+
+    F["Bộ phận tài chính / kế toán<br/>Quản lý doanh thu, giao dịch và đối soát"]
+
+    G["Đội ngũ kỹ thuật<br/>Xây dựng, triển khai và bảo trì hệ thống"]
+
+    H["Bộ phận chăm sóc khách hàng<br/>Hỗ trợ khách hàng và xử lý khiếu nại"]
+
+    I["Nhà cung cấp bản đồ / định vị<br/>Cung cấp dữ liệu vị trí, bản đồ và khoảng cách"]
+
+    CAB(("CAB System"))
+
+    A --> CAB
+    B --> CAB
+    C --> CAB
+    D --> CAB
+    E --> CAB
+    F --> CAB
+    G --> CAB
+    H --> CAB
+    I --> CAB
+```
