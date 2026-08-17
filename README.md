@@ -39,13 +39,13 @@ quadrantChart
 ```
 ## 4. Business Goals
 
-| Mã | Business Goal | Mục tiêu |
+| Mã | Business Goal | Mô tả |
 |:---|:---|:---|
-| BG01 | Tự động hóa và tối ưu hóa hoạt động điều phối xe | Chuyển đổi quy trình tiếp nhận và phân công chuyến từ thủ công sang tự động, giảm thời gian xử lý yêu cầu và nâng cao hiệu quả sử dụng tài xế. |
-| BG02 | Nâng cao chất lượng dịch vụ và trải nghiệm khách hàng | Cung cấp quy trình đặt xe thuận tiện, minh bạch và cho phép khách hàng theo dõi xuyên suốt hành trình. |
-| BG03 | Nâng cao hiệu quả quản lý và vận hành | Hỗ trợ bộ phận vận hành theo dõi tập trung khách hàng, tài xế, phương tiện và chuyến đi, đồng thời xử lý các tình huống bất thường. |
-| BG04 | Chuẩn hóa và kiểm soát tính cước, thanh toán và doanh thu | Quản lý thống nhất quá trình tính cước và thanh toán, hỗ trợ nhiều phương thức thanh toán và cung cấp dữ liệu phục vụ đối soát, quản lý doanh thu. |
-| BG05 | Tăng cường khả năng kiểm soát và khai thác dữ liệu | Tập trung dữ liệu khách hàng, tài xế, phương tiện, chuyến đi và giao dịch để phục vụ vận hành, báo cáo và phân tích. |
-| BG06 | Đảm bảo tính liên tục và khả năng mở rộng | Đáp ứng sự gia tăng về khách hàng, tài xế và chuyến đi, đồng thời hạn chế ảnh hưởng khi một thành phần gặp sự cố. |
-| BG07 | Tạo nền tảng linh hoạt cho phát triển dịch vụ trong tương lai | Cho phép bổ sung loại hình dịch vụ, phương thức thanh toán, kênh thông báo và các thành phần tích hợp mới. |
-| BG08 | Đảm bảo an toàn thông tin và tuân thủ | Bảo vệ thông tin cá nhân, dữ liệu vị trí và dữ liệu giao dịch; kiểm soát quyền truy cập và lưu vết các thao tác quan trọng. |
+| **BG01** | **Tự động hóa và tối ưu hóa hoạt động điều phối xe** | Chuyển đổi quy trình tiếp nhận và phân công chuyến từ thủ công sang tự động, giảm thời gian xử lý yêu cầu và nâng cao hiệu quả sử dụng đội ngũ tài xế. |
+| **BG02** | **Nâng cao chất lượng dịch vụ và trải nghiệm khách hàng** | Cung cấp quy trình đặt xe minh bạch, thuận tiện và có khả năng theo dõi xuyên suốt từ khi tạo yêu cầu đến khi hoàn thành chuyến, đồng thời cung cấp thông tin kịp thời thông qua hệ thống thông báo. |
+| **BG03** | **Nâng cao hiệu quả quản lý và vận hành** | Cung cấp cho bộ phận vận hành khả năng theo dõi tập trung khách hàng, tài xế, phương tiện và chuyến đi; hỗ trợ xử lý các tình huống bất thường và đưa ra quyết định dựa trên dữ liệu vận hành. |
+| **BG04** | **Chuẩn hóa và kiểm soát hoạt động tính cước, thanh toán và doanh thu** | Quản lý thống nhất quá trình tính cước và thanh toán, hỗ trợ nhiều phương thức thanh toán, kiểm soát trạng thái giao dịch và cung cấp dữ liệu phục vụ đối soát, quản lý doanh thu và báo cáo. |
+| **BG05** | **Tăng cường khả năng kiểm soát và khai thác dữ liệu** | Hình thành nguồn dữ liệu tập trung về khách hàng, tài xế, phương tiện, chuyến đi và giao dịch nhằm phục vụ vận hành, tra cứu, báo cáo và phân tích hiệu quả kinh doanh. |
+| **BG06** | **Đảm bảo tính liên tục và khả năng mở rộng của hoạt động kinh doanh** | Xây dựng nền tảng có khả năng đáp ứng sự gia tăng về số lượng khách hàng, tài xế và chuyến đi; hạn chế việc một thành phần gặp sự cố làm gián đoạn toàn bộ dịch vụ. |
+| **BG07** | **Tạo nền tảng linh hoạt cho việc phát triển dịch vụ trong tương lai** | Cho phép doanh nghiệp bổ sung loại hình dịch vụ, phương thức thanh toán, kênh thông báo và các thành phần tích hợp mới mà không phải thay đổi lớn toàn bộ hệ thống. |
+| **BG08** | **Đảm bảo an toàn thông tin và tuân thủ trong hoạt động kinh doanh** | Bảo vệ thông tin cá nhân, dữ liệu vị trí và dữ liệu giao dịch; kiểm soát quyền truy cập, lưu vết các thao tác quan trọng và hỗ trợ truy xuất khi phát sinh sự cố. |
