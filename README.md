@@ -19,14 +19,14 @@
 
 ```mermaid
 quadrantChart
-    title Ma trận Quyền lực - Mức độ quan tâm
-    x-axis "Mức độ quan tâm thấp" --> "Mức độ quan tâm cao"
-    y-axis "Quyền lực thấp" --> "Quyền lực cao"
+    title Power - Interest Matrix
+    x-axis "Low Interest" --> "High Interest"
+    y-axis "Low Power" --> "High Power"
 
-    quadrant-1 "Quản lý chặt chẽ"
-    quadrant-2 "Duy trì sự hài lòng"
-    quadrant-3 "Theo dõi"
-    quadrant-4 "Tham vấn và cung cấp thông tin"
+    quadrant-1 "Manage Closely"
+    quadrant-2 "Keep Satisfied"
+    quadrant-3 "Monitor"
+    quadrant-4 "Keep Informed"
 
     "Ban lãnh đạo": [0.90, 0.95]
     "Khách hàng": [0.90, 0.30]
