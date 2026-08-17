@@ -68,8 +68,6 @@ Trong thời gian 7 tuần, dự án tập trung xây dựng các chức năng c
 | 11 | **Bảo mật và phân quyền** | Xác thực người dùng, phân quyền chức năng quản trị và bảo vệ dữ liệu cơ bản. |
 ## 5. Business Requirements
 
-# 6. Business Requirements
-
 Trong phạm vi MVP với thời gian triển khai **7 tuần**, hệ thống CAB tập trung vào các nghiệp vụ cốt lõi phục vụ toàn bộ quy trình đặt xe, từ quản lý người dùng, đặt xe, tìm tài xế, thực hiện chuyến, thanh toán đến quản lý vận hành và bảo mật.
 
 | BR ID | Nhóm nghiệp vụ | Business Requirement |
@@ -110,7 +108,7 @@ Trong phạm vi MVP với thời gian triển khai **7 tuần**, hệ thống CA
 | **BR34** | Bảo mật và phân quyền | Hệ thống phải lưu vết các thao tác quan trọng để phục vụ kiểm tra, đối soát và xử lý sự cố. |
 | **BR35** | Khả năng mở rộng | Hệ thống phải được thiết kế đủ linh hoạt để có thể mở rộng các loại dịch vụ, phương thức thanh toán và kênh thông báo trong tương lai mà hạn chế ảnh hưởng đến các chức năng hiện có. |
 
-# 6. Functional Requirements
+## 6. Functional Requirements
 
 Functional Requirements (FR) được phân rã từ 35 Business Requirements (BR), mô tả các chức năng cụ thể mà hệ thống CAB cần cung cấp để đáp ứng phạm vi MVP trong thời gian 7 tuần.
 
