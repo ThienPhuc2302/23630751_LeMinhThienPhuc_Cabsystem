@@ -13,37 +13,24 @@
 | Nhà cung cấp thanh toán | Cung cấp dịch vụ và xử lý các giao dịch thanh toán điện tử |
 | Bộ phận tài chính / kế toán | Quản lý doanh thu, giao dịch, đối soát và báo cáo tài chính |
 | Nhà cung cấp bản đồ / định vị | Cung cấp dữ liệu vị trí, bản đồ, khoảng cách và hỗ trợ xác định tài xế |
-## Sơ đồ Stakeholder
+## Stakeholder matrix
 
 ```mermaid
-flowchart LR
-    A["Ban lãnh đạo<br/>Định hướng, phê duyệt và đưa ra quyết định quan trọng"]
+quadrantChart
+    title Ma trận Quyền lực - Mức độ quan tâm
+    x-axis "Mức độ quan tâm thấp" --> "Mức độ quan tâm cao"
+    y-axis "Quyền lực thấp" --> "Quyền lực cao"
 
-    B["Khách hàng<br/>Đăng ký, đặt xe, theo dõi chuyến, thanh toán và đánh giá tài xế"]
+    quadrant-1 "Quản lý chặt chẽ"
+    quadrant-2 "Duy trì sự hài lòng"
+    quadrant-3 "Theo dõi"
+    quadrant-4 "Tham vấn và cung cấp thông tin"
 
-    C["Tài xế<br/>Nhận chuyến, thực hiện chuyến và cập nhật trạng thái"]
-
-    D["Nhân viên vận hành<br/>Quản lý khách hàng, tài xế, phương tiện và chuyến đi"]
-
-    E["Nhà cung cấp thanh toán<br/>Xử lý các giao dịch thanh toán điện tử"]
-
-    F["Bộ phận tài chính / kế toán<br/>Quản lý doanh thu, giao dịch và đối soát"]
-
-    G["Đội ngũ kỹ thuật<br/>Xây dựng, triển khai và bảo trì hệ thống"]
-
-    H["Bộ phận chăm sóc khách hàng<br/>Hỗ trợ khách hàng và xử lý khiếu nại"]
-
-    I["Nhà cung cấp bản đồ / định vị<br/>Cung cấp dữ liệu vị trí, bản đồ và khoảng cách"]
-
-    CAB(("CAB System"))
-
-    A --> CAB
-    B --> CAB
-    C --> CAB
-    D --> CAB
-    E --> CAB
-    F --> CAB
-    G --> CAB
-    H --> CAB
-    I --> CAB
+    "Ban lãnh đạo": [0.90, 0.95]
+    "Khách hàng": [0.90, 0.30]
+    "Tài xế": [0.82, 0.35]
+    "Nhân viên vận hành": [0.85, 0.80]
+    "Nhà cung cấp thanh toán": [0.55, 0.75]
+    "Bộ phận tài chính / kế toán": [0.80, 0.85]
+    "Nhà cung cấp bản đồ / định vị": [0.50, 0.55]
 ```
