@@ -39,16 +39,13 @@ quadrantChart
 ```
 ## 4. Business Goals
 
-- **BG01 – Tự động hóa quy trình đặt và phân công xe:** Giảm sự phụ thuộc vào việc điều phối thủ công, rút ngắn thời gian tìm kiếm và phân công tài xế.
-
-- **BG02 – Nâng cao trải nghiệm khách hàng:** Giúp khách hàng đặt xe thuận tiện, theo dõi trạng thái chuyến đi và nhận thông báo kịp thời.
-
-- **BG03 – Nâng cao hiệu quả vận hành:** Tối ưu việc phân công tài xế dựa trên vị trí, trạng thái sẵn sàng và các tiêu chí vận hành.
-
-- **BG04 – Quản lý thanh toán và doanh thu hiệu quả:** Hỗ trợ thanh toán bằng tiền mặt và thanh toán điện tử, quản lý tập trung giao dịch, xử lý thanh toán thất bại và cung cấp dữ liệu phục vụ đối soát, báo cáo doanh thu.
-
-- **BG05 – Tập trung và kiểm soát dữ liệu:** Quản lý tập trung thông tin khách hàng, tài xế, phương tiện, chuyến đi và giao dịch.
-
-- **BG06 – Đảm bảo khả năng mở rộng và hoạt động ổn định:** Đáp ứng nhu cầu tăng cao, cho phép các thành phần mở rộng độc lập và hạn chế ảnh hưởng khi một thành phần gặp sự cố.
-
-- **BG07 – Tăng cường bảo mật và kiểm soát dữ liệu:** Bảo vệ thông tin cá nhân, dữ liệu vị trí, dữ liệu giao dịch và kiểm soát quyền truy cập vào các chức năng quản trị.
+| Mã | Business Goal | Mục tiêu |
+|:---|:---|:---|
+| BG01 | Tự động hóa và tối ưu hóa hoạt động điều phối xe | Chuyển đổi quy trình tiếp nhận và phân công chuyến từ thủ công sang tự động, giảm thời gian xử lý yêu cầu và nâng cao hiệu quả sử dụng tài xế. |
+| BG02 | Nâng cao chất lượng dịch vụ và trải nghiệm khách hàng | Cung cấp quy trình đặt xe thuận tiện, minh bạch và cho phép khách hàng theo dõi xuyên suốt hành trình. |
+| BG03 | Nâng cao hiệu quả quản lý và vận hành | Hỗ trợ bộ phận vận hành theo dõi tập trung khách hàng, tài xế, phương tiện và chuyến đi, đồng thời xử lý các tình huống bất thường. |
+| BG04 | Chuẩn hóa và kiểm soát tính cước, thanh toán và doanh thu | Quản lý thống nhất quá trình tính cước và thanh toán, hỗ trợ nhiều phương thức thanh toán và cung cấp dữ liệu phục vụ đối soát, quản lý doanh thu. |
+| BG05 | Tăng cường khả năng kiểm soát và khai thác dữ liệu | Tập trung dữ liệu khách hàng, tài xế, phương tiện, chuyến đi và giao dịch để phục vụ vận hành, báo cáo và phân tích. |
+| BG06 | Đảm bảo tính liên tục và khả năng mở rộng | Đáp ứng sự gia tăng về khách hàng, tài xế và chuyến đi, đồng thời hạn chế ảnh hưởng khi một thành phần gặp sự cố. |
+| BG07 | Tạo nền tảng linh hoạt cho phát triển dịch vụ trong tương lai | Cho phép bổ sung loại hình dịch vụ, phương thức thanh toán, kênh thông báo và các thành phần tích hợp mới. |
+| BG08 | Đảm bảo an toàn thông tin và tuân thủ | Bảo vệ thông tin cá nhân, dữ liệu vị trí và dữ liệu giao dịch; kiểm soát quyền truy cập và lưu vết các thao tác quan trọng. |
