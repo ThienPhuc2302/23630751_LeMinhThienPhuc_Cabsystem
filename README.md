@@ -13,6 +13,7 @@
 | Nhà cung cấp thanh toán | Cung cấp dịch vụ và xử lý các giao dịch thanh toán điện tử |
 | Bộ phận tài chính / kế toán | Quản lý doanh thu, giao dịch, đối soát và báo cáo tài chính |
 | Nhà cung cấp bản đồ / định vị | Cung cấp dữ liệu vị trí, bản đồ, khoảng cách và hỗ trợ xác định tài xế |
+| Nhà cung cấp dịch vụ thông báo | Cung cấp kênh gửi như thông báo ứng dụng, tin nhắn, thư điện tử... |
 ## Stakeholder matrix
 
 ```mermaid
@@ -33,4 +34,5 @@ quadrantChart
     "Nhà cung cấp thanh toán": [0.55, 0.75]
     "Bộ phận tài chính / kế toán": [0.80, 0.85]
     "Nhà cung cấp bản đồ / định vị": [0.50, 0.55]
+    "Nhà cung cấp dịch vụ thông báo": [0.55, 0.60]
 ```
