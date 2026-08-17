@@ -36,3 +36,16 @@ quadrantChart
     "Nhà cung cấp bản đồ / định vị": [0.50, 0.55]
     "Nhà cung cấp dịch vụ thông báo": [0.55, 0.60]
 ```
+## Business Goals
+
+- **BG01 – Tự động hóa quy trình đặt và phân công xe:** Giảm sự phụ thuộc vào việc điều phối thủ công, rút ngắn thời gian tìm kiếm và phân công tài xế.
+
+- **BG02 – Nâng cao trải nghiệm khách hàng:** Giúp khách hàng đặt xe thuận tiện, theo dõi trạng thái chuyến đi và nhận thông báo kịp thời.
+
+- **BG03 – Nâng cao hiệu quả vận hành:** Tối ưu việc phân công tài xế dựa trên vị trí, trạng thái sẵn sàng và các tiêu chí vận hành.
+
+- **BG04 – Tập trung và kiểm soát dữ liệu:** Quản lý tập trung thông tin khách hàng, tài xế, phương tiện, chuyến đi và giao dịch.
+
+- **BG05 – Đảm bảo khả năng mở rộng và hoạt động ổn định:** Đáp ứng nhu cầu tăng cao, cho phép các thành phần mở rộng độc lập và hạn chế ảnh hưởng khi một thành phần gặp sự cố.
+
+- **BG06 – Tăng cường bảo mật và kiểm soát dữ liệu:** Bảo vệ thông tin cá nhân, dữ liệu vị trí, dữ liệu giao dịch và kiểm soát quyền truy cập vào các chức năng quản trị.
