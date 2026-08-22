@@ -244,3 +244,7 @@ Functional Requirements (FR) được phân rã từ 35 Business Requirements (B
 | **FR88** | BR29 | Hệ thống bảo vệ dữ liệu phương tiện, dữ liệu vị trí và dữ liệu giao dịch khỏi truy cập trái phép. |
 | **FR89** | BR30 | Hệ thống ghi nhận các thao tác quan trọng của người dùng và nhân viên vận hành. |
 | **FR90** | BR30 | Hệ thống cho phép người dùng có quyền tra cứu lịch sử các thao tác quan trọng phục vụ kiểm tra và xử lý sự cố. |
+
+## 7. Usecase tổng quát
+<img width="824" height="814" alt="USECASE TỔNG QUÁT CAB SYSTEM" src="https://github.com/user-attachments/assets/f259d14a-d2ed-4a0d-a71d-65c7012de071" />
+
