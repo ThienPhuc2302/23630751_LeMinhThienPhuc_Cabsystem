@@ -65,142 +65,158 @@ Trong thời gian 7 tuần, dự án tập trung xây dựng các chức năng c
 | 8 | **Quản lý vận hành** | Quản lý Customer, Driver, phương tiện, chuyến đi và xử lý sự cố |
 | 9 | **Lịch sử & đánh giá** | Xem lịch sử chuyến, số tiền và đánh giá tài xế |
 | 10 | **Bảo mật & phân quyền** | Xác thực, phân quyền và bảo vệ dữ liệu |
-## 5. Business Requirements
+# 5. Business Requirements
 
-Trong phạm vi MVP với thời gian triển khai **7 tuần**, hệ thống CAB tập trung vào các nghiệp vụ cốt lõi phục vụ toàn bộ quy trình đặt xe, từ quản lý người dùng, đặt xe, tìm tài xế, thực hiện chuyến, thanh toán đến quản lý vận hành và bảo mật.
+Trong phạm vi MVP với thời gian triển khai **7 tuần**, hệ thống CAB tập trung vào các nghiệp vụ cốt lõi phục vụ toàn bộ quy trình đặt xe, từ quản lý tài khoản, quản lý khách hàng và tài xế, đặt xe, tìm tài xế, thực hiện chuyến, thanh toán đến quản lý vận hành, báo cáo và bảo mật.
 
 | BR ID | Module | Business Requirement |
 |:---:|:---|:---|
-| **BR01** | Quản lý khách hàng | Hệ thống phải hỗ trợ khách hàng đăng ký, đăng nhập và quản lý thông tin tài khoản cá nhân. |
-| **BR02** | Quản lý tài xế & phương tiện | Hệ thống phải hỗ trợ doanh nghiệp quản lý tài khoản, hồ sơ, phương tiện và trạng thái hoạt động của tài xế. |
-| **BR03** | Đặt xe | Hệ thống phải cho phép khách hàng tạo yêu cầu đặt xe với điểm đón, điểm đến và loại xe hoặc dịch vụ. |
-| **BR04** | Đặt xe | Hệ thống phải quản lý trạng thái của yêu cầu đặt xe trong quá trình xử lý. |
-| **BR05** | Tìm & phân công tài xế | Hệ thống phải tự động tìm và lựa chọn tài xế phù hợp dựa trên trạng thái, vị trí và tiêu chí vận hành. |
-| **BR06** | Tìm & phân công tài xế | Hệ thống phải xử lý trường hợp tài xế chấp nhận, từ chối hoặc không phản hồi và tiếp tục tìm tài xế khác khi cần. |
-| **BR07** | Tìm & phân công tài xế | Hệ thống phải thông báo cho khách hàng khi không tìm được tài xế phù hợp. |
-| **BR08** | Quản lý & theo dõi chuyến | Hệ thống phải tạo và quản lý chuyến đi sau khi tài xế nhận yêu cầu. |
-| **BR09** | Quản lý & theo dõi chuyến | Hệ thống phải cho phép tài xế cập nhật các trạng thái chính và cung cấp thông tin chuyến cho khách hàng. |
-| **BR10** | Quản lý & theo dõi chuyến | Hệ thống phải hỗ trợ cập nhật và hiển thị thông tin vị trí, thời gian dự kiến và trạng thái chuyến trong phạm vi cho phép. |
-| **BR11** | Tính cước & thanh toán | Hệ thống phải tính và lưu cước chuyến đi dựa trên loại dịch vụ và thông tin chuyến. |
-| **BR12** | Tính cước & thanh toán | Hệ thống phải hỗ trợ thanh toán tiền mặt và thanh toán điện tử thông qua nhà cung cấp bên ngoài. |
-| **BR13** | Tính cước & thanh toán | Hệ thống phải quản lý kết quả giao dịch và hỗ trợ xử lý thanh toán thất bại theo chính sách doanh nghiệp. |
-| **BR14** | Thông báo | Hệ thống phải gửi thông báo cho khách hàng và tài xế về các sự kiện quan trọng liên quan đến yêu cầu và chuyến đi. |
-| **BR15** | Quản lý vận hành | Hệ thống phải cho phép nhân viên vận hành quản lý khách hàng, tài xế, phương tiện và theo dõi các chuyến đang diễn ra. |
-| **BR16** | Quản lý vận hành | Hệ thống phải hỗ trợ nhân viên vận hành tra cứu và xử lý các chuyến có lỗi, bất thường và thông tin giao dịch theo quyền được cấp. |
-| **BR17** | Lịch sử & đánh giá | Hệ thống phải lưu trữ lịch sử chuyến đi, thông tin thanh toán và cho phép khách hàng đánh giá tài xế sau chuyến. |
-| **BR18** | Báo cáo | Hệ thống phải cung cấp các báo cáo cơ bản về số lượng chuyến, doanh thu, tỷ lệ hoàn thành, tỷ lệ hủy và hiệu quả tài xế. |
-| **BR19** | Bảo mật & phân quyền | Hệ thống phải xác thực người dùng, phân quyền theo vai trò và bảo vệ dữ liệu khỏi truy cập trái phép. |
-| **BR20** | Bảo mật & phân quyền | Hệ thống phải lưu vết các thao tác quan trọng để phục vụ kiểm tra và xử lý sự cố. |
+| **BR01** | Chức năng dùng chung | Hệ thống phải hỗ trợ Customer và Driver đăng ký tài khoản, đồng thời hỗ trợ Customer, Driver và Nhân viên vận hành đăng nhập và đăng xuất. |
+| **BR02** | Quản lý khách hàng | Hệ thống phải hỗ trợ Customer xem và cập nhật thông tin cá nhân của mình. |
+| **BR03** | Quản lý tài xế & phương tiện | Hệ thống phải hỗ trợ Driver quản lý thông tin tài khoản, phương tiện và trạng thái hoạt động của mình. |
+| **BR04** | Đặt xe | Hệ thống phải cho phép Customer tạo yêu cầu đặt xe với điểm đón, điểm đến và loại xe hoặc dịch vụ. |
+| **BR05** | Đặt xe | Hệ thống phải quản lý trạng thái của yêu cầu đặt xe trong quá trình xử lý. |
+| **BR06** | Tìm & phân công tài xế | Hệ thống phải tự động tìm và lựa chọn tài xế phù hợp dựa trên trạng thái, vị trí và tiêu chí vận hành. |
+| **BR07** | Tìm & phân công tài xế | Hệ thống phải xử lý trường hợp tài xế chấp nhận, từ chối hoặc không phản hồi và tiếp tục tìm tài xế khác khi cần. |
+| **BR08** | Tìm & phân công tài xế | Hệ thống phải thông báo cho Customer khi không tìm được tài xế phù hợp. |
+| **BR09** | Quản lý & theo dõi chuyến | Hệ thống phải tạo và quản lý chuyến đi sau khi tài xế nhận yêu cầu. |
+| **BR10** | Quản lý & theo dõi chuyến | Hệ thống phải cho phép Driver cập nhật các trạng thái chính của chuyến đi và cung cấp thông tin chuyến cho Customer. |
+| **BR11** | Quản lý & theo dõi chuyến | Hệ thống phải hỗ trợ cập nhật và hiển thị thông tin vị trí, thời gian dự kiến và trạng thái chuyến trong phạm vi cho phép. |
+| **BR12** | Tính cước & thanh toán | Hệ thống phải tính và lưu cước chuyến đi dựa trên loại dịch vụ và thông tin chuyến. |
+| **BR13** | Tính cước & thanh toán | Hệ thống phải hỗ trợ thanh toán tiền mặt và thanh toán điện tử thông qua nhà cung cấp bên ngoài. |
+| **BR14** | Tính cước & thanh toán | Hệ thống phải quản lý kết quả giao dịch và hỗ trợ xử lý thanh toán thất bại theo chính sách doanh nghiệp. |
+| **BR15** | Thông báo | Hệ thống phải gửi thông báo cho Customer và Driver về các sự kiện quan trọng liên quan đến yêu cầu và chuyến đi. |
+| **BR16** | Quản lý vận hành | Hệ thống phải cho phép Nhân viên vận hành quản lý khách hàng, tài xế, phương tiện và theo dõi các chuyến đang diễn ra. |
+| **BR17** | Quản lý vận hành | Hệ thống phải hỗ trợ Nhân viên vận hành tra cứu và xử lý các chuyến có lỗi, bất thường và thông tin giao dịch theo quyền được cấp. |
+| **BR18** | Lịch sử & đánh giá | Hệ thống phải lưu trữ lịch sử chuyến đi, thông tin thanh toán và cho phép Customer đánh giá Driver sau chuyến. |
+| **BR19** | Báo cáo | Hệ thống phải cung cấp các báo cáo cơ bản về số lượng chuyến, doanh thu, tỷ lệ hoàn thành, tỷ lệ hủy và hiệu quả hoạt động của Driver. |
+| **BR20** | Bảo mật & phân quyền | Hệ thống phải xác thực người dùng, phân quyền theo vai trò và bảo vệ dữ liệu khỏi truy cập trái phép. |
+| **BR21** | Bảo mật & phân quyền | Hệ thống phải lưu vết các thao tác quan trọng để phục vụ kiểm tra và xử lý sự cố. |
 
-## 6. Functional Requirements
+# 6. Functional Requirements
 
-Functional Requirements (FR) được phân rã từ 35 Business Requirements (BR), mô tả các chức năng cụ thể mà hệ thống CAB cần cung cấp để đáp ứng phạm vi MVP trong thời gian 7 tuần.
+Functional Requirements (FR) được phân rã từ **21 Business Requirements (BR)**, mô tả các chức năng cụ thể mà hệ thống CAB cần cung cấp để đáp ứng phạm vi MVP trong thời gian 7 tuần.
 
-## 6.1. Quản lý khách hàng
-
-| FR ID | BR ID | Functional Requirement |
-|:---:|:---:|:---|
-| **FR01** | BR01 | Hệ thống cho phép khách hàng đăng ký, đăng nhập và đăng xuất tài khoản. |
-| **FR02** | BR01 | Hệ thống cho phép khách hàng xem và cập nhật thông tin cá nhân. |
-| **FR03** | BR01 | Hệ thống xác thực thông tin tài khoản trước khi cho phép truy cập chức năng yêu cầu đăng nhập. |
-
-## 6.2. Quản lý tài xế
+## 6.1. Chức năng dùng chung
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR04** | BR02 | Hệ thống cho phép doanh nghiệp tạo, xem và cập nhật hồ sơ tài xế. |
-| **FR05** | BR02 | Hệ thống cho phép quản lý thông tin phương tiện và liên kết phương tiện với tài xế. |
-| **FR06** | BR02 | Hệ thống cho phép tài xế cập nhật trạng thái hoạt động và trạng thái sẵn sàng nhận chuyến. |
+| **FR01** | BR01 | Hệ thống cho phép Customer và Driver đăng ký tài khoản. |
+| **FR02** | BR01 | Hệ thống cho phép Customer, Driver và Nhân viên vận hành đăng nhập vào hệ thống. |
+| **FR03** | BR01 | Hệ thống cho phép Customer, Driver và Nhân viên vận hành đăng xuất khỏi hệ thống. |
 
-## 6.3. Đặt xe
-
-| FR ID | BR ID | Functional Requirement |
-|:---:|:---:|:---|
-| **FR07** | BR03 | Hệ thống cho phép khách hàng nhập điểm đón, điểm đến và lựa chọn loại xe hoặc dịch vụ. |
-| **FR08** | BR03 | Hệ thống hiển thị thông tin yêu cầu để khách hàng kiểm tra và xác nhận đặt xe. |
-| **FR09** | BR04 | Hệ thống tạo mã yêu cầu và quản lý trạng thái đặt xe trong quá trình xử lý. |
-
-
-## 6.4. Tìm và phân công tài xế
+## 6.2. Quản lý khách hàng
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR10** | BR05 | Hệ thống tự động tìm kiếm các tài xế có khả năng nhận chuyến dựa trên trạng thái và vị trí. |
-| **FR11** | BR05 | Hệ thống áp dụng tiêu chí vận hành để lựa chọn và ưu tiên tài xế phù hợp. |
-| **FR12** | BR06 | Hệ thống gửi yêu cầu nhận chuyến và ghi nhận kết quả chấp nhận, từ chối hoặc không phản hồi của tài xế. |
-| **FR13** | BR06 | Hệ thống tự động chuyển sang tài xế khác khi tài xế được đề xuất từ chối hoặc không phản hồi trong thời gian quy định. |
-| **FR14** | BR07 | Hệ thống kết thúc quá trình tìm kiếm khi không còn tài xế phù hợp và thông báo cho khách hàng. |
+| **FR04** | BR02 | Hệ thống cho phép Customer xem và cập nhật thông tin cá nhân. |
 
-## 6.5. Quản lý chuyến đi
+## 6.3. Quản lý tài xế & phương tiện
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR15** | BR08 | Hệ thống tạo chuyến đi và liên kết chuyến với khách hàng, tài xế và phương tiện sau khi tài xế nhận chuyến. |
-| **FR16** | BR09 | Hệ thống cho phép tài xế cập nhật các trạng thái chính: đã đến điểm đón, đã đón khách, đang di chuyển và hoàn thành. |
-| **FR17** | BR09 | Hệ thống hiển thị trạng thái và thông tin tài xế của chuyến đi cho khách hàng. |
-| **FR18** | BR10 | Hệ thống tiếp nhận và cập nhật thông tin vị trí của tài xế trong quá trình thực hiện chuyến. |
-| **FR19** | BR10 | Hệ thống hiển thị vị trí và thời gian dự kiến tài xế đến cho khách hàng dựa trên dữ liệu vị trí. |
+| **FR05** | BR03 | Hệ thống cho phép Driver xem và cập nhật thông tin tài khoản cá nhân. |
+| **FR06** | BR03 | Hệ thống cho phép Driver xem và cập nhật thông tin phương tiện của mình. |
+| **FR07** | BR03 | Hệ thống cho phép Driver cập nhật trạng thái hoạt động và trạng thái sẵn sàng nhận chuyến. |
 
-## 6.6. Tính cước và thanh toán
+## 6.4. Đặt xe
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR20** | BR11 | Hệ thống tính và lưu số tiền phải thanh toán dựa trên loại dịch vụ và thông tin chuyến đi. |
-| **FR21** | BR12 | Hệ thống cho phép khách hàng lựa chọn thanh toán bằng tiền mặt hoặc thanh toán điện tử. |
-| **FR22** | BR12 | Hệ thống gửi yêu cầu thanh toán điện tử đến nhà cung cấp thanh toán bên ngoài và tiếp nhận kết quả giao dịch. |
-| **FR23** | BR13 | Hệ thống cập nhật trạng thái giao dịch và thông báo kết quả thanh toán cho khách hàng. |
-| **FR24** | BR13 | Hệ thống hỗ trợ thực hiện lại thanh toán khi giao dịch điện tử thất bại theo chính sách doanh nghiệp. |
+| **FR08** | BR04 | Hệ thống cho phép Customer nhập điểm đón, điểm đến và lựa chọn loại xe hoặc dịch vụ. |
+| **FR09** | BR04 | Hệ thống kiểm tra thông tin đặt xe và hiển thị thông tin yêu cầu để Customer xác nhận. |
+| **FR10** | BR05 | Hệ thống tạo mã yêu cầu và quản lý trạng thái đặt xe trong quá trình xử lý. |
 
-## 6.7. Thông báo
+## 6.5. Tìm và phân công tài xế
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR25** | BR14 | Hệ thống gửi thông báo cho khách hàng về các sự kiện chính: tiếp nhận yêu cầu, nhận chuyến, tài xế đến, hoàn thành chuyến và kết quả thanh toán. |
-| **FR26** | BR14 | Hệ thống gửi thông báo cho tài xế về chuyến mới và các thay đổi quan trọng liên quan đến chuyến. |
+| **FR11** | BR06 | Hệ thống tự động tìm kiếm các Driver đang có khả năng nhận chuyến dựa trên trạng thái và vị trí. |
+| **FR12** | BR06 | Hệ thống áp dụng các tiêu chí vận hành để lựa chọn và ưu tiên Driver phù hợp. |
+| **FR13** | BR07 | Hệ thống gửi yêu cầu nhận chuyến và ghi nhận kết quả chấp nhận, từ chối hoặc không phản hồi của Driver. |
+| **FR14** | BR07 | Hệ thống tự động chuyển sang Driver phù hợp tiếp theo khi Driver được đề xuất từ chối hoặc không phản hồi trong thời gian quy định. |
+| **FR15** | BR08 | Hệ thống thông báo cho Customer khi không còn Driver phù hợp để thực hiện chuyến. |
 
-
-## 6.8. Quản lý vận hành
-
-| FR ID | BR ID | Functional Requirement |
-|:---:|:---:|:---|
-| **FR27** | BR15 | Hệ thống cung cấp chức năng tra cứu và quản lý khách hàng, tài xế và phương tiện cho nhân viên vận hành. |
-| **FR28** | BR15 | Hệ thống hiển thị danh sách và trạng thái các chuyến đang diễn ra. |
-| **FR29** | BR16 | Hệ thống cho phép nhân viên vận hành tra cứu các chuyến có lỗi hoặc bất thường. |
-| **FR30** | BR16 | Hệ thống cho phép nhân viên vận hành xử lý hoặc cập nhật trạng thái chuyến theo quyền được cấp. |
-| **FR31** | BR16 | Hệ thống cho phép nhân viên vận hành tra cứu thông tin và lịch sử giao dịch. |
-
-## 6.9. Lịch sử và đánh giá
+## 6.6. Quản lý & theo dõi chuyến
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR32** | BR17 | Hệ thống lưu trữ và cho phép khách hàng tra cứu lịch sử chuyến đi. |
-| **FR33** | BR17 | Hệ thống hiển thị chi tiết chuyến đi, số tiền và trạng thái thanh toán. |
-| **FR34** | BR17 | Hệ thống cho phép khách hàng đánh giá tài xế sau khi chuyến hoàn thành và lưu kết quả đánh giá. |
-## 6.10. Bảo mật và phân quyền
+| **FR16** | BR09 | Hệ thống tạo chuyến đi và liên kết chuyến với Customer, Driver và phương tiện sau khi Driver nhận chuyến. |
+| **FR17** | BR10 | Hệ thống cho phép Driver cập nhật các trạng thái chính: đã đến điểm đón, đã đón khách, đang di chuyển và hoàn thành. |
+| **FR18** | BR10 | Hệ thống hiển thị trạng thái và thông tin Driver của chuyến đi cho Customer. |
+| **FR19** | BR11 | Hệ thống tiếp nhận và cập nhật thông tin vị trí của Driver trong quá trình thực hiện chuyến. |
+| **FR20** | BR11 | Hệ thống hiển thị vị trí Driver và thời gian dự kiến đến cho Customer dựa trên dữ liệu vị trí. |
+
+## 6.7. Tính cước & thanh toán
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR37** | BR19 | Hệ thống xác thực người dùng và phân quyền truy cập theo vai trò Customer, Driver và nhân viên vận hành. |
-| **FR38** | BR19 | Hệ thống ngăn người dùng thực hiện các chức năng ngoài phạm vi quyền được cấp. |
-| **FR39** | BR19 | Hệ thống bảo vệ thông tin cá nhân, phương tiện, vị trí và dữ liệu giao dịch khỏi truy cập trái phép. |
-| **FR40** | BR20 | Hệ thống ghi nhận các thao tác quan trọng của người dùng và nhân viên vận hành. |
-| **FR41** | BR20 | Hệ thống cho phép người dùng có quyền tra cứu lịch sử thao tác phục vụ kiểm tra và xử lý sự cố. |
+| **FR21** | BR12 | Hệ thống tính và lưu số tiền phải thanh toán dựa trên loại dịch vụ và thông tin chuyến đi. |
+| **FR22** | BR13 | Hệ thống cho phép Customer lựa chọn thanh toán bằng tiền mặt hoặc thanh toán điện tử. |
+| **FR23** | BR13 | Hệ thống gửi yêu cầu thanh toán điện tử đến nhà cung cấp thanh toán bên ngoài và tiếp nhận kết quả giao dịch. |
+| **FR24** | BR14 | Hệ thống cập nhật trạng thái giao dịch và thông báo kết quả thanh toán cho Customer. |
+| **FR25** | BR14 | Hệ thống hỗ trợ thực hiện lại thanh toán khi giao dịch điện tử thất bại theo chính sách doanh nghiệp. |
+
+## 6.8. Thông báo
+
+| FR ID | BR ID | Functional Requirement |
+|:---:|:---:|:---|
+| **FR26** | BR15 | Hệ thống gửi thông báo cho Customer về các sự kiện chính: tiếp nhận yêu cầu, nhận chuyến, Driver đến, hoàn thành chuyến và kết quả thanh toán. |
+| **FR27** | BR15 | Hệ thống gửi thông báo cho Driver về chuyến mới và các thay đổi quan trọng liên quan đến chuyến. |
+
+## 6.9. Quản lý vận hành
+
+| FR ID | BR ID | Functional Requirement |
+|:---:|:---:|:---|
+| **FR28** | BR16 | Hệ thống cung cấp chức năng tra cứu và quản lý khách hàng, tài xế và phương tiện cho Nhân viên vận hành. |
+| **FR29** | BR16 | Hệ thống hiển thị danh sách và trạng thái các chuyến đang diễn ra cho Nhân viên vận hành. |
+| **FR30** | BR17 | Hệ thống cho phép Nhân viên vận hành tra cứu các chuyến có lỗi hoặc bất thường. |
+| **FR31** | BR17 | Hệ thống cho phép Nhân viên vận hành xử lý hoặc cập nhật trạng thái chuyến theo quyền được cấp. |
+| **FR32** | BR17 | Hệ thống cho phép Nhân viên vận hành tra cứu thông tin và lịch sử giao dịch. |
+
+## 6.10. Lịch sử & đánh giá
+
+| FR ID | BR ID | Functional Requirement |
+|:---:|:---:|:---|
+| **FR33** | BR18 | Hệ thống lưu trữ và cho phép Customer tra cứu lịch sử chuyến đi. |
+| **FR34** | BR18 | Hệ thống hiển thị chi tiết chuyến đi, số tiền và trạng thái thanh toán. |
+| **FR35** | BR18 | Hệ thống cho phép Customer đánh giá Driver sau khi chuyến hoàn thành và lưu kết quả đánh giá. |
+
+## 6.11. Báo cáo
+
+| FR ID | BR ID | Functional Requirement |
+|:---:|:---:|:---|
+| **FR36** | BR19 | Hệ thống cung cấp báo cáo về số lượng chuyến, doanh thu, tỷ lệ hoàn thành, tỷ lệ hủy và hiệu quả hoạt động của Driver theo khoảng thời gian và tiêu chí được lựa chọn. |
+
+## 6.12. Bảo mật & phân quyền
+
+| FR ID | BR ID | Functional Requirement |
+|:---:|:---:|:---|
+| **FR37** | BR20 | Hệ thống xác thực người dùng và phân quyền truy cập theo vai trò Customer, Driver và Nhân viên vận hành. |
+| **FR38** | BR20 | Hệ thống ngăn người dùng thực hiện các chức năng ngoài phạm vi quyền được cấp. |
+| **FR39** | BR20 | Hệ thống bảo vệ thông tin cá nhân, phương tiện, vị trí và dữ liệu giao dịch khỏi truy cập trái phép. |
+
+## 6.13. Audit Log
+
+| FR ID | BR ID | Functional Requirement |
+|:---:|:---:|:---|
+| **FR40** | BR21 | Hệ thống ghi nhận các thao tác quan trọng của người dùng và cho phép người dùng có quyền tra cứu lịch sử thao tác phục vụ kiểm tra và xử lý sự cố. |
 ## 7. Usecase tổng quát
 <img width="824" height="814" alt="USECASE TỔNG QUÁT CAB SYSTEM" src="https://github.com/user-attachments/assets/f259d14a-d2ed-4a0d-a71d-65c7012de071" />
 
-## 8. Đặc tả Usecase
+# 8. Đặc tả Use Case
 
-## UC01 – Đăng ký và đăng nhập tài khoản
+## UC01 – Đăng ký tài khoản
 
-### Đăng ký và đăng nhập tài khoản
+### Đăng ký tài khoản
 
 **Tiền điều kiện**
 
-Người dùng chưa đăng nhập vào hệ thống.
+Customer hoặc Driver chưa có tài khoản trong hệ thống.
 
 **Hậu điều kiện**
 
-Tài khoản được tạo thành công hoặc người dùng được xác thực và đăng nhập vào hệ thống với vai trò tương ứng.
+Tài khoản được tạo thành công và thông tin tài khoản được lưu vào hệ thống.
 
 **Actor chính**
 
@@ -214,44 +230,110 @@ Không
 
 | Customer / Driver | Hệ thống |
 |---|---|
-| **1.** Chọn chức năng “Đăng ký” hoặc “Đăng nhập” | |
-| | **2.** Hiển thị biểu mẫu tương ứng |
-| **3.** Nhập thông tin tài khoản | |
+| **1.** Chọn chức năng “Đăng ký” | |
+| | **2.** Hiển thị biểu mẫu đăng ký |
+| **3.** Nhập thông tin đăng ký | |
 | | **4.** Kiểm tra tính hợp lệ của thông tin |
-| | **5.** Xác thực thông tin tài khoản |
-| | **6.** Xác định vai trò của người dùng |
-| | **7.** Tạo phiên đăng nhập |
-| | **8.** Chuyển người dùng đến giao diện phù hợp với vai trò |
-| | **9.** Hiển thị thông báo đăng nhập thành công |
+| | **5.** Kiểm tra tài khoản đã tồn tại hay chưa |
+| | **6.** Tạo tài khoản |
+| | **7.** Lưu thông tin tài khoản |
+| | **8.** Hiển thị thông báo đăng ký thành công |
 
 ### Alternative flow
 
-**3.1 Người dùng đăng ký tài khoản mới:**
+**3.1 Thông tin đăng ký không hợp lệ:**
 
-1. Người dùng nhập thông tin đăng ký.
-2. Hệ thống kiểm tra thông tin.
-3. Hệ thống tạo tài khoản.
-4. Hệ thống thông báo đăng ký thành công.
-5. Quay lại bước 1.
+1. Hệ thống hiển thị thông báo thông tin không hợp lệ.
+2. Quay lại bước **3**.
 
-**5.1 Thông tin đăng nhập không chính xác:**
+**5.1 Tài khoản đã tồn tại:**
 
-1. Hệ thống thông báo thông tin tài khoản không chính xác.
-2. Người dùng nhập lại thông tin.
-3. Quay lại bước 3.
+1. Hệ thống hiển thị thông báo tài khoản đã tồn tại.
+2. Quay lại bước **3**.
 
 ### Exception flow
 
-**3.1 Người dùng hủy thao tác đăng ký/đăng nhập:**
+**3.1 Customer / Driver hủy đăng ký:**
 
-1. Người dùng chọn “Hủy”.
+1. Customer / Driver chọn “Hủy”.
 2. Hệ thống không lưu thông tin đang nhập.
 3. Hệ thống kết thúc use case.
 
+---
+
+## UC02 – Đăng nhập / Đăng xuất tài khoản
+
+### Đăng nhập / Đăng xuất tài khoản
+
+**Tiền điều kiện**
+
+Đối với đăng nhập: người dùng đã có tài khoản và chưa đăng nhập.
+
+Đối với đăng xuất: người dùng đã đăng nhập vào hệ thống.
+
+**Hậu điều kiện**
+
+Đối với đăng nhập: người dùng được xác thực và tạo phiên đăng nhập với vai trò tương ứng.
+
+Đối với đăng xuất: phiên đăng nhập của người dùng được kết thúc.
+
+**Actor chính**
+
+Customer / Driver / Nhân viên vận hành
+
+**Actor phụ**
+
+Không
+
+### Basic flow – Đăng nhập
+
+| Customer / Driver / Nhân viên vận hành | Hệ thống |
+|---|---|
+| **1.** Chọn chức năng “Đăng nhập” | |
+| | **2.** Hiển thị biểu mẫu đăng nhập |
+| **3.** Nhập thông tin đăng nhập | |
+| | **4.** Kiểm tra thông tin đăng nhập |
+| | **5.** Xác thực tài khoản |
+| | **6.** Xác định vai trò người dùng |
+| | **7.** Tạo phiên đăng nhập |
+| | **8.** Chuyển người dùng đến giao diện phù hợp |
+| | **9.** Hiển thị thông báo đăng nhập thành công |
+
+### Basic flow – Đăng xuất
+
+| Customer / Driver / Nhân viên vận hành | Hệ thống |
+|---|---|
+| **10.** Chọn chức năng “Đăng xuất” | |
+| | **11.** Xác nhận thao tác đăng xuất |
+| | **12.** Kết thúc phiên đăng nhập |
+| | **13.** Xóa thông tin phiên truy cập |
+| | **14.** Chuyển về giao diện đăng nhập |
+| | **15.** Hiển thị thông báo đăng xuất thành công |
+
+### Alternative flow
+
+**3.1 Thông tin đăng nhập không chính xác:**
+
+1. Hệ thống hiển thị thông báo thông tin đăng nhập không chính xác.
+2. Quay lại bước **3**.
+
+### Exception flow
+
+**11.1 Người dùng không xác nhận đăng xuất:**
+
+1. Người dùng chọn “Quay lại”.
+2. Hệ thống giữ nguyên phiên đăng nhập.
+3. Kết thúc thao tác đăng xuất.
+
+**12.1 Không thể kết thúc phiên đăng nhập:**
+
+1. Hệ thống ghi nhận lỗi.
+2. Hệ thống thông báo không thể đăng xuất.
+3. Kết thúc use case.
 
 ---
 
-## UC02 – Quản lý thông tin cá nhân
+## UC03 – Quản lý thông tin cá nhân
 
 ### Quản lý thông tin cá nhân
 
@@ -286,11 +368,10 @@ Không
 
 ### Alternative flow
 
-**5.1 Customer nhập thông tin không hợp lệ:**
+**5.1 Thông tin cá nhân không hợp lệ:**
 
-1. Hệ thống hiển thị thông báo lỗi.
-2. Customer chỉnh sửa lại thông tin.
-3. Quay lại bước 6.
+1. Hệ thống hiển thị thông báo thông tin không hợp lệ.
+2. Quay lại bước **5**.
 
 ### Exception flow
 
@@ -301,24 +382,23 @@ Không
 3. Hệ thống giữ nguyên thông tin hiện tại.
 4. Kết thúc use case.
 
-
 ---
 
-## UC03 – Quản lý tài xế và phương tiện
+## UC04 – Quản lý tài khoản và phương tiện
 
-### Quản lý tài xế và phương tiện
+### Quản lý tài khoản và phương tiện
 
 **Tiền điều kiện**
 
-Nhân viên vận hành đã đăng nhập thành công và có quyền quản lý tài xế.
+Driver đã đăng nhập thành công vào hệ thống.
 
 **Hậu điều kiện**
 
-Thông tin tài xế hoặc phương tiện được tạo mới hoặc cập nhật thành công.
+Thông tin tài khoản hoặc phương tiện của Driver được hiển thị hoặc cập nhật thành công.
 
 **Actor chính**
 
-Nhân viên vận hành
+Driver
 
 **Actor phụ**
 
@@ -326,50 +406,36 @@ Không
 
 ### Basic flow
 
-| Nhân viên vận hành | Hệ thống |
+| Driver | Hệ thống |
 |---|---|
-| **1.** Chọn chức năng “Quản lý tài xế” | |
-| | **2.** Hiển thị danh sách tài xế |
-| **3.** Chọn tài xế cần xem hoặc cập nhật | |
-| | **4.** Hiển thị thông tin tài xế |
-| **5.** Nhập hoặc chỉnh sửa thông tin tài xế | |
+| **1.** Chọn chức năng “Tài khoản và phương tiện” | |
+| | **2.** Hiển thị thông tin tài khoản và phương tiện hiện tại |
+| **3.** Chọn thông tin cần cập nhật | |
+| | **4.** Hiển thị biểu mẫu cập nhật |
+| **5.** Nhập hoặc chỉnh sửa thông tin | |
 | | **6.** Kiểm tra tính hợp lệ của thông tin |
-| | **7.** Lưu thông tin tài xế |
-| **8.** Chọn chức năng quản lý phương tiện | |
-| | **9.** Hiển thị danh sách phương tiện |
-| **10.** Chọn phương tiện cần liên kết hoặc cập nhật | |
-| | **11.** Hiển thị thông tin phương tiện |
-| **12.** Nhập hoặc chỉnh sửa thông tin phương tiện | |
-| | **13.** Lưu thông tin phương tiện |
-| | **14.** Hiển thị thông báo thao tác thành công |
+| | **7.** Lưu thông tin mới |
+| | **8.** Hiển thị thông báo cập nhật thành công |
 
 ### Alternative flow
 
-**5.1 Thông tin tài xế không hợp lệ:**
+**5.1 Thông tin tài khoản hoặc phương tiện không hợp lệ:**
 
-1. Hệ thống hiển thị thông báo lỗi.
-2. Nhân viên vận hành chỉnh sửa thông tin.
-3. Quay lại bước 6.
-
-**12.1 Thông tin phương tiện không hợp lệ:**
-
-1. Hệ thống hiển thị thông báo lỗi.
-2. Nhân viên vận hành chỉnh sửa thông tin.
-3. Quay lại bước 13.
+1. Hệ thống hiển thị thông báo thông tin không hợp lệ.
+2. Quay lại bước **5**.
 
 ### Exception flow
 
-**10.1 Phương tiện đã được liên kết với tài xế khác:**
+**3.1 Driver hủy cập nhật:**
 
-1. Hệ thống phát hiện phương tiện đã được liên kết.
-2. Hệ thống hiển thị thông báo lỗi.
-3. Hệ thống không thực hiện liên kết.
-4. Kết thúc thao tác.
-
+1. Driver chọn “Hủy”.
+2. Hệ thống không lưu thay đổi.
+3. Hệ thống giữ nguyên thông tin hiện tại.
+4. Kết thúc use case.
 
 ---
 
-## UC04 – Cập nhật trạng thái tài xế
+## UC05 – Cập nhật trạng thái tài xế
 
 ### Cập nhật trạng thái tài xế
 
@@ -402,12 +468,10 @@ Không
 
 ### Alternative flow
 
-**3.1 Driver chọn trạng thái không phù hợp:**
+**3.1 Trạng thái được chọn không hợp lệ:**
 
-1. Hệ thống phát hiện trạng thái không thể chuyển đổi.
-2. Hệ thống hiển thị thông báo.
-3. Driver chọn trạng thái khác.
-4. Quay lại bước 4.
+1. Hệ thống hiển thị thông báo trạng thái không hợp lệ.
+2. Quay lại bước **3**.
 
 ### Exception flow
 
@@ -417,10 +481,9 @@ Không
 2. Hệ thống giữ nguyên trạng thái hiện tại.
 3. Kết thúc use case.
 
-
 ---
 
-## UC05 – Đặt xe
+## UC06 – Đặt xe
 
 ### Đặt xe
 
@@ -460,34 +523,29 @@ Map/Location Provider
 
 ### Alternative flow
 
-**3.1 Customer nhập địa điểm không hợp lệ:**
+**3.1 Địa điểm không hợp lệ:**
 
-1. Hệ thống không xác định được điểm đón hoặc điểm đến.
-2. Hệ thống hiển thị thông báo lỗi.
-3. Customer nhập lại thông tin địa điểm.
-4. Quay lại bước 4.
+1. Hệ thống hiển thị thông báo địa điểm không hợp lệ.
+2. Quay lại bước **3**.
 
-**5.1 Loại xe hoặc dịch vụ không khả dụng:**
+**5.1 Loại xe hoặc dịch vụ không hợp lệ:**
 
-1. Hệ thống phát hiện loại xe hoặc dịch vụ không khả dụng.
-2. Hệ thống hiển thị thông báo.
-3. Customer chọn loại xe hoặc dịch vụ khác.
-4. Quay lại bước 6.
+1. Hệ thống hiển thị thông báo loại xe hoặc dịch vụ không hợp lệ.
+2. Quay lại bước **5**.
 
 ### Exception flow
 
-**8.1 Customer không xác nhận đặt xe:**
+**8.1 Customer hủy đặt xe:**
 
 1. Customer chọn “Hủy”.
 2. Hệ thống không tạo yêu cầu đặt xe.
 3. Hệ thống kết thúc use case.
 
-
 ---
 
-## UC06 – Hủy yêu cầu/chuyến đi
+## UC07 – Hủy yêu cầu / chuyến đi
 
-### Hủy yêu cầu/chuyến đi
+### Hủy yêu cầu / chuyến đi
 
 **Tiền điều kiện**
 
@@ -521,11 +579,10 @@ Không
 
 ### Alternative flow
 
-**4.1 Không đáp ứng điều kiện hủy:**
+**3.1 Yêu cầu/chuyến đi không thể hủy:**
 
-1. Hệ thống xác định yêu cầu/chuyến đi không thể hủy ở trạng thái hiện tại.
-2. Hệ thống hiển thị thông báo.
-3. Hệ thống giữ nguyên trạng thái.
+1. Hệ thống hiển thị thông báo không thể hủy yêu cầu/chuyến đi.
+2. Quay lại bước **3**.
 
 ### Exception flow
 
@@ -533,12 +590,11 @@ Không
 
 1. Customer chọn “Quay lại”.
 2. Hệ thống giữ nguyên trạng thái yêu cầu/chuyến đi.
-3. Kết thúc thao tác.
-
+3. Kết thúc use case.
 
 ---
 
-## UC07 – Tìm và phân công tài xế
+## UC08 – Tìm và phân công tài xế
 
 ### Tìm và phân công tài xế
 
@@ -548,66 +604,58 @@ Yêu cầu đặt xe đã được tạo thành công và đang ở trạng thá
 
 **Hậu điều kiện**
 
-Một tài xế phù hợp được phân công cho chuyến hoặc hệ thống xác định không có tài xế phù hợp.
+Một Driver phù hợp được phân công cho chuyến hoặc hệ thống xác định không có Driver phù hợp.
 
 **Actor chính**
 
-CAB System
+Driver
 
 **Actor phụ**
 
-Driver
+Không
 
 ### Basic flow
 
-| CAB System | Driver |
+| Driver | Hệ thống |
 |---|---|
-| **1.** Nhận yêu cầu đặt xe cần tìm tài xế | |
-| **2.** Xác định các tài xế đang sẵn sàng nhận chuyến | |
-| **3.** Xác định các tài xế phù hợp với yêu cầu | |
-| **4.** Áp dụng tiêu chí lựa chọn và ưu tiên tài xế | |
-| **5.** Gửi yêu cầu nhận chuyến đến tài xế được lựa chọn | |
-| | **6.** Nhận thông báo yêu cầu nhận chuyến |
-| | **7.** Chấp nhận yêu cầu nhận chuyến |
-| **8.** Ghi nhận kết quả chấp nhận | |
-| **9.** Phân công chuyến cho Driver | |
-| **10.** Cập nhật trạng thái booking/chuyến | |
-| **11.** Gửi thông báo kết quả phân công | |
-| | **12.** Nhận thông tin chuyến được phân công |
+| | **1.** Xác định yêu cầu đặt xe cần tìm tài xế |
+| | **2.** Xác định các Driver đang sẵn sàng nhận chuyến |
+| | **3.** Xác định các Driver phù hợp |
+| | **4.** Áp dụng tiêu chí lựa chọn và ưu tiên Driver |
+| | **5.** Gửi yêu cầu nhận chuyến đến Driver được lựa chọn |
+| **6.** Nhận thông báo yêu cầu nhận chuyến | |
+| **7.** Chấp nhận yêu cầu nhận chuyến | |
+| | **8.** Ghi nhận kết quả chấp nhận |
+| | **9.** Phân công chuyến cho Driver |
+| | **10.** Cập nhật trạng thái booking/chuyến |
+| | **11.** Gửi thông báo kết quả phân công |
+| **12.** Nhận thông tin chuyến được phân công | |
 
 ### Alternative flow
 
 **7.1 Driver từ chối yêu cầu:**
 
-1. Driver từ chối yêu cầu nhận chuyến.
-2. Hệ thống ghi nhận kết quả từ chối.
-3. Hệ thống lựa chọn tài xế phù hợp tiếp theo.
-4. Hệ thống gửi yêu cầu đến tài xế tiếp theo.
-5. Quay lại bước 6.
+1. Hệ thống ghi nhận Driver từ chối yêu cầu.
+2. Quay lại bước **5**.
 
-**7.2 Driver không phản hồi trong thời gian quy định:**
+**7.2 Driver không phản hồi:**
 
-1. Hệ thống ghi nhận trạng thái không phản hồi.
-2. Hệ thống lựa chọn tài xế phù hợp tiếp theo.
-3. Hệ thống gửi yêu cầu đến tài xế tiếp theo.
-4. Quay lại bước 6.
+1. Hệ thống ghi nhận Driver không phản hồi.
+2. Quay lại bước **5**.
 
 ### Exception flow
 
-**4.1 Không tìm thấy tài xế phù hợp:**
+**4.1 Không tìm thấy Driver phù hợp:**
 
-1. Hệ thống xác định không còn tài xế phù hợp.
-2. Hệ thống kết thúc quá trình tìm tài xế.
-3. Hệ thống cập nhật trạng thái yêu cầu.
-4. Hệ thống thông báo cho Customer.
-5. Kết thúc use case.
-
+1. Hệ thống cập nhật trạng thái yêu cầu.
+2. Hệ thống thông báo cho Customer.
+3. Kết thúc use case.
 
 ---
 
-## UC08 – Quản lý chuyến đi
+## UC09 – Cập nhật trạng thái chuyến đi
 
-### Quản lý chuyến đi
+### Cập nhật trạng thái chuyến đi
 
 **Tiền điều kiện**
 
@@ -615,7 +663,7 @@ Chuyến đi đã được phân công cho Driver.
 
 **Hậu điều kiện**
 
-Thông tin và trạng thái chuyến đi được cập nhật đến khi chuyến hoàn thành hoặc kết thúc theo trường hợp phù hợp.
+Trạng thái chuyến đi được cập nhật thành công.
 
 **Actor chính**
 
@@ -623,49 +671,39 @@ Driver
 
 **Actor phụ**
 
-Customer
+Không
 
 ### Basic flow
 
 | Driver | Hệ thống |
 |---|---|
-| | **1.** Tạo chuyến và liên kết Customer, Driver và phương tiện |
-| **2.** Xem thông tin chuyến | |
-| **3.** Di chuyển đến điểm đón | |
-| **4.** Cập nhật trạng thái “Đã đến điểm đón” | |
+| **1.** Xem thông tin chuyến được phân công | |
+| | **2.** Hiển thị trạng thái hiện tại |
+| **3.** Chọn trạng thái mới | |
+| | **4.** Kiểm tra điều kiện chuyển trạng thái |
 | | **5.** Cập nhật trạng thái chuyến |
-| **6.** Đón Customer | |
-| **7.** Cập nhật trạng thái “Đã đón khách” | |
-| | **8.** Cập nhật trạng thái chuyến |
-| **9.** Thực hiện chuyến đi | |
-| **10.** Cập nhật trạng thái “Đang di chuyển” | |
-| | **11.** Cập nhật trạng thái chuyến |
-| **12.** Đến điểm đến | |
-| **13.** Cập nhật trạng thái “Hoàn thành” | |
-| | **14.** Lưu thông tin chuyến |
-| | **15.** Chuyển chuyến sang quá trình tính cước |
+| | **6.** Lưu trạng thái mới |
+| | **7.** Thông báo trạng thái mới cho Customer |
+| | **8.** Hiển thị thông báo cập nhật thành công |
 
 ### Alternative flow
 
-**4.1 Driver chưa đến điểm đón:**
+**3.1 Trạng thái mới không hợp lệ:**
 
-1. Driver tiếp tục di chuyển đến điểm đón.
-2. Trạng thái chuyến được giữ nguyên.
-3. Quay lại bước 4.
+1. Hệ thống hiển thị thông báo trạng thái không hợp lệ.
+2. Quay lại bước **3**.
 
 ### Exception flow
 
-**9.1 Chuyến bị hủy:**
+**3.1 Driver hủy thao tác cập nhật:**
 
-1. Hệ thống xác định chuyến đáp ứng điều kiện hủy.
-2. Hệ thống cập nhật trạng thái chuyến thành hủy.
-3. Hệ thống thông báo cho các bên liên quan.
-4. Kết thúc use case.
-
+1. Driver chọn “Hủy”.
+2. Hệ thống giữ nguyên trạng thái hiện tại.
+3. Kết thúc use case.
 
 ---
 
-## UC09 – Theo dõi chuyến đi
+## UC10 – Theo dõi chuyến đi
 
 ### Theo dõi chuyến đi
 
@@ -701,24 +739,22 @@ Map/Location Provider
 
 ### Alternative flow
 
-**3.1 Không nhận được dữ liệu vị trí mới:**
+**3.1 Dữ liệu vị trí không hợp lệ hoặc không được cập nhật:**
 
-1. Hệ thống sử dụng dữ liệu vị trí gần nhất nếu có.
-2. Hệ thống thông báo trạng thái vị trí chưa được cập nhật.
-3. Hệ thống tiếp tục chờ dữ liệu mới.
+1. Hệ thống hiển thị thông báo dữ liệu vị trí không hợp lệ hoặc chưa được cập nhật.
+2. Quay lại bước **3**.
 
 ### Exception flow
 
 **8.1 Chuyến đã hoàn thành:**
 
 1. Hệ thống cập nhật trạng thái chuyến là “Hoàn thành”.
-2. Hệ thống kết thúc chức năng theo dõi thời gian thực.
-3. Customer có thể xem thông tin chuyến trong lịch sử.
-
+2. Hệ thống kết thúc chức năng theo dõi.
+3. Kết thúc use case.
 
 ---
 
-## UC10 – Tính cước
+## UC11 – Tính cước
 
 ### Tính cước
 
@@ -732,7 +768,7 @@ Số tiền phải thanh toán được tính toán và lưu vào thông tin chu
 
 **Actor chính**
 
-CAB System
+Không có Actor trực tiếp
 
 **Actor phụ**
 
@@ -740,23 +776,22 @@ Không
 
 ### Basic flow
 
-| CAB System | |
-|---|---|
-| **1.** Nhận thông tin chuyến đã hoàn thành | |
-| **2.** Xác định loại dịch vụ | |
-| **3.** Lấy thông tin chuyến cần thiết để tính cước | |
-| **4.** Áp dụng quy tắc tính cước | |
-| **5.** Tính số tiền phải thanh toán | |
-| **6.** Lưu số tiền vào thông tin chuyến/giao dịch | |
-| **7.** Chuyển sang quá trình thanh toán | |
+| Hệ thống |
+|---|
+| **1.** Nhận thông tin chuyến đã hoàn thành |
+| **2.** Xác định loại dịch vụ |
+| **3.** Lấy thông tin chuyến cần thiết để tính cước |
+| **4.** Áp dụng quy tắc tính cước |
+| **5.** Tính số tiền phải thanh toán |
+| **6.** Lưu số tiền vào thông tin chuyến/giao dịch |
+| **7.** Chuyển sang quá trình thanh toán |
 
 ### Alternative flow
 
-**3.1 Thiếu thông tin cần thiết để tính cước:**
+**3.1 Thông tin chuyến không đầy đủ:**
 
-1. Hệ thống xác định dữ liệu chưa đầy đủ.
-2. Hệ thống yêu cầu bổ sung hoặc xử lý dữ liệu cần thiết.
-3. Quay lại bước 3.
+1. Hệ thống hiển thị thông báo thiếu thông tin để tính cước.
+2. Quay lại bước **3**.
 
 ### Exception flow
 
@@ -764,13 +799,12 @@ Không
 
 1. Hệ thống ghi nhận lỗi tính cước.
 2. Hệ thống không xác nhận số tiền phải thanh toán.
-3. Hệ thống thông báo lỗi cho bộ phận vận hành.
+3. Hệ thống thông báo lỗi cho Nhân viên vận hành.
 4. Kết thúc use case.
-
 
 ---
 
-## UC11 – Thanh toán
+## UC12 – Thanh toán
 
 ### Thanh toán
 
@@ -798,40 +832,31 @@ Payment Provider
 | | **2.** Hiển thị số tiền và phương thức thanh toán |
 | **3.** Chọn phương thức thanh toán | |
 | | **4.** Xử lý phương thức thanh toán được lựa chọn |
-| | **5.** Nếu thanh toán điện tử, gửi yêu cầu đến Payment Provider |
+| | **5.** Gửi yêu cầu thanh toán điện tử đến Payment Provider |
 | | **6.** Tiếp nhận kết quả giao dịch |
 | | **7.** Cập nhật trạng thái thanh toán |
 | | **8.** Hiển thị kết quả thanh toán |
 
 ### Alternative flow
 
-**3.1 Customer chọn thanh toán bằng tiền mặt:**
+**3.1 Phương thức thanh toán không hợp lệ:**
 
-1. Customer chọn phương thức “Tiền mặt”.
-2. Hệ thống ghi nhận phương thức thanh toán.
-3. Hệ thống cập nhật trạng thái thanh toán theo quy trình tiền mặt.
-4. Quay lại bước 8.
-
-**5.1 Thanh toán điện tử thành công:**
-
-1. Payment Provider trả về kết quả thành công.
-2. Hệ thống cập nhật trạng thái giao dịch thành công.
-3. Quay lại bước 8.
+1. Hệ thống hiển thị thông báo phương thức thanh toán không hợp lệ.
+2. Quay lại bước **3**.
 
 ### Exception flow
 
-**5.2 Thanh toán điện tử thất bại:**
+**5.1 Thanh toán điện tử thất bại:**
 
 1. Payment Provider trả về kết quả thất bại.
 2. Hệ thống cập nhật trạng thái giao dịch là thất bại.
 3. Hệ thống thông báo cho Customer.
-4. Customer có thể thực hiện lại thanh toán theo chính sách.
+4. Customer có thể thực hiện lại thanh toán theo chính sách doanh nghiệp.
 5. Kết thúc use case.
-
 
 ---
 
-## UC12 – Gửi thông báo
+## UC13 – Gửi thông báo
 
 ### Gửi thông báo
 
@@ -845,7 +870,7 @@ Thông báo được gửi thành công hoặc hệ thống ghi nhận trạng t
 
 **Actor chính**
 
-CAB System
+Không có Actor trực tiếp
 
 **Actor phụ**
 
@@ -853,23 +878,23 @@ Notification Provider
 
 ### Basic flow
 
-| CAB System | Notification Provider |
+| Hệ thống | Notification Provider |
 |---|---|
 | **1.** Phát hiện sự kiện cần thông báo | |
 | **2.** Xác định người nhận | |
 | **3.** Tạo nội dung thông báo | |
-| **4.** Gửi thông báo | **5.** Tiếp nhận yêu cầu gửi thông báo |
+| **4.** Gửi yêu cầu thông báo | |
+| | **5.** Tiếp nhận yêu cầu gửi thông báo |
 | | **6.** Xử lý và gửi thông báo |
 | **7.** Tiếp nhận kết quả gửi | |
 | **8.** Ghi nhận trạng thái gửi | |
 
 ### Alternative flow
 
-**6.1 Notification Provider yêu cầu xử lý lại:**
+**5.1 Yêu cầu gửi thông báo không hợp lệ:**
 
-1. Hệ thống tiếp nhận trạng thái chưa hoàn tất.
-2. Hệ thống xử lý lại theo cơ chế được cấu hình.
-3. Quay lại bước 4.
+1. Notification Provider trả về thông báo yêu cầu không hợp lệ.
+2. Quay lại bước **4**.
 
 ### Exception flow
 
@@ -880,10 +905,9 @@ Notification Provider
 3. Hệ thống lưu thông tin lỗi.
 4. Kết thúc use case.
 
-
 ---
 
-## UC13 – Quản lý vận hành
+## UC14 – Quản lý vận hành
 
 ### Quản lý vận hành
 
@@ -908,26 +932,28 @@ Không
 | Nhân viên vận hành | Hệ thống |
 |---|---|
 | **1.** Chọn chức năng “Quản lý vận hành” | |
-| | **2.** Hiển thị thông tin khách hàng, tài xế, phương tiện và chuyến đi |
-| **3.** Chọn chức năng tra cứu chuyến đang diễn ra | |
-| | **4.** Hiển thị danh sách và trạng thái các chuyến |
-| **5.** Chọn chuyến cần kiểm tra | |
-| | **6.** Hiển thị thông tin chi tiết chuyến |
-| **7.** Thực hiện thao tác xử lý theo quyền được cấp | |
+| | **2.** Hiển thị các chức năng quản lý |
+| **3.** Chọn đối tượng hoặc chức năng cần quản lý | |
+| | **4.** Hiển thị danh sách và thông tin liên quan |
+| **5.** Chọn đối tượng hoặc chuyến cần xem/xử lý | |
+| | **6.** Hiển thị thông tin chi tiết |
+| **7.** Thực hiện thao tác theo quyền được cấp | |
 | | **8.** Kiểm tra quyền thực hiện |
 | | **9.** Cập nhật thông tin hoặc trạng thái |
-| | **10.** Ghi nhận thao tác |
+| | **10.** Lưu thông tin và ghi nhận thao tác |
 | | **11.** Hiển thị kết quả xử lý |
 
 ### Alternative flow
 
-**5.1 Chuyến có lỗi hoặc bất thường:**
+**3.1 Đối tượng hoặc thông tin không hợp lệ:**
 
-1. Hệ thống hiển thị thông tin lỗi hoặc bất thường.
-2. Nhân viên vận hành kiểm tra thông tin.
-3. Nhân viên vận hành thực hiện thao tác xử lý.
-4. Hệ thống cập nhật kết quả.
-5. Quay lại bước 10.
+1. Hệ thống hiển thị thông báo thông tin không hợp lệ.
+2. Quay lại bước **3**.
+
+**5.1 Dữ liệu tra cứu không hợp lệ:**
+
+1. Hệ thống hiển thị thông báo dữ liệu tra cứu không hợp lệ.
+2. Quay lại bước **5**.
 
 ### Exception flow
 
@@ -938,10 +964,16 @@ Không
 3. Hệ thống ghi nhận thao tác bị từ chối.
 4. Kết thúc thao tác.
 
+**9.1 Không thể cập nhật dữ liệu:**
+
+1. Hệ thống ghi nhận lỗi cập nhật.
+2. Hệ thống thông báo thao tác không thành công.
+3. Hệ thống giữ nguyên dữ liệu trước đó.
+4. Kết thúc thao tác.
 
 ---
 
-## UC14 – Tra cứu lịch sử và đánh giá
+## UC15 – Tra cứu lịch sử và đánh giá
 
 ### Tra cứu lịch sử và đánh giá
 
@@ -978,30 +1010,32 @@ Không
 
 ### Alternative flow
 
-**5.1 Customer không đánh giá chuyến:**
+**7.1 Dữ liệu đánh giá không hợp lệ:**
 
-1. Customer bỏ qua chức năng đánh giá.
-2. Hệ thống giữ nguyên thông tin chuyến.
-3. Kết thúc thao tác đánh giá.
+1. Hệ thống hiển thị thông báo dữ liệu đánh giá không hợp lệ.
+2. Quay lại bước **7**.
 
 ### Exception flow
 
-**6.1 Chuyến chưa đủ điều kiện đánh giá:**
+**5.1 Customer không thực hiện đánh giá:**
 
-1. Hệ thống xác định chuyến chưa hoàn thành hoặc không đáp ứng điều kiện.
-2. Hệ thống thông báo Customer chưa thể đánh giá.
-3. Kết thúc thao tác.
+1. Customer chọn “Quay lại” hoặc bỏ qua chức năng đánh giá.
+2. Hệ thống giữ nguyên thông tin chuyến.
+3. Kết thúc thao tác đánh giá.
+
+**6.1 Chuyến không đủ điều kiện đánh giá:**
+
+1. Hệ thống thông báo chuyến không đủ điều kiện đánh giá.
+2. Kết thúc thao tác.
 
 **6.2 Chuyến đã được đánh giá:**
 
-1. Hệ thống phát hiện chuyến đã có đánh giá.
-2. Hệ thống không tạo thêm đánh giá trùng.
-3. Kết thúc thao tác.
-
+1. Hệ thống thông báo chuyến đã được đánh giá.
+2. Kết thúc thao tác.
 
 ---
 
-## UC15 – Xem báo cáo
+## UC16 – Xem báo cáo
 
 ### Xem báo cáo
 
@@ -1037,155 +1071,14 @@ Không
 
 ### Alternative flow
 
-**5.1 Nhân viên vận hành thay đổi tiêu chí tra cứu:**
+**5.1 Khoảng thời gian hoặc tiêu chí không hợp lệ:**
 
-1. Nhân viên vận hành nhập lại khoảng thời gian hoặc tiêu chí.
-2. Hệ thống kiểm tra thông tin.
-3. Quay lại bước 7.
+1. Hệ thống hiển thị thông báo tiêu chí không hợp lệ.
+2. Quay lại bước **5**.
 
 ### Exception flow
 
 **7.1 Không có dữ liệu phù hợp:**
 
-1. Hệ thống không tìm thấy dữ liệu.
-2. Hệ thống hiển thị thông báo không có dữ liệu.
-3. Nhân viên vận hành có thể thay đổi tiêu chí tra cứu.
-4. Kết thúc thao tác.
-
-
----
-
-## UC16 – Xác thực và phân quyền
-
-### Xác thực và phân quyền
-
-**Tiền điều kiện**
-
-Người dùng có tài khoản trong hệ thống.
-
-**Hậu điều kiện**
-
-Người dùng được phép truy cập chức năng phù hợp với vai trò hoặc bị từ chối nếu không đủ quyền.
-
-**Actor chính**
-
-User
-
-**Actor phụ**
-
-Không
-
-### Basic flow
-
-| User | Hệ thống |
-|---|---|
-| **1.** Nhập thông tin xác thực | |
-| | **2.** Kiểm tra thông tin tài khoản |
-| | **3.** Xác thực người dùng |
-| | **4.** Xác định vai trò của người dùng |
-| | **5.** Tạo phiên truy cập |
-| **6.** Truy cập chức năng của hệ thống | |
-| | **7.** Kiểm tra quyền truy cập |
-| | **8.** Cho phép truy cập chức năng nếu người dùng có quyền |
-| | **9.** Áp dụng quyền truy cập đối với dữ liệu |
-
-### Alternative flow
-
-**6.1 User truy cập chức năng không yêu cầu quyền đặc biệt:**
-
-1. Hệ thống xác định chức năng được phép truy cập.
-2. Hệ thống cho phép User thực hiện chức năng.
-3. Quay lại bước 9.
-
-### Exception flow
-
-**3.1 Xác thực thất bại:**
-
-1. Hệ thống từ chối đăng nhập.
-2. Hệ thống hiển thị thông báo lỗi.
-3. User nhập lại thông tin.
-4. Quay lại bước 2.
-
-**7.1 User không có quyền truy cập:**
-
-1. Hệ thống từ chối thao tác.
-2. Hệ thống hiển thị thông báo không có quyền.
-3. Hệ thống ghi nhận thao tác bị từ chối.
-4. Kết thúc thao tác.
-
-
----
-
-## UC17 – Ghi nhận và tra cứu Audit Log
-
-### Ghi nhận và tra cứu Audit Log
-
-**Tiền điều kiện**
-
-Người dùng đã được xác thực. Người dùng thực hiện thao tác cần ghi nhận hoặc đã được cấp quyền tra cứu Audit Log.
-
-**Hậu điều kiện**
-
-Thao tác quan trọng được ghi nhận đầy đủ hoặc lịch sử thao tác được hiển thị cho người dùng có quyền.
-
-**Actor chính**
-
-Nhân viên vận hành / Người dùng được phân quyền
-
-**Actor phụ**
-
-Không
-
-### Basic flow – Ghi nhận Audit Log
-
-| Người dùng / Nhân viên vận hành | Hệ thống |
-|---|---|
-| **1.** Thực hiện một thao tác quan trọng | |
-| | **2.** Xác định thao tác thuộc phạm vi cần ghi log |
-| | **3.** Ghi nhận người thực hiện |
-| | **4.** Ghi nhận thời gian thực hiện |
-| | **5.** Ghi nhận loại thao tác và đối tượng liên quan |
-| | **6.** Lưu Audit Log |
-
-### Basic flow – Tra cứu Audit Log
-
-| Người dùng được phân quyền | Hệ thống |
-|---|---|
-| **1.** Chọn chức năng “Audit Log” | |
-| | **2.** Kiểm tra quyền truy cập |
-| | **3.** Hiển thị giao diện tra cứu |
-| **4.** Nhập tiêu chí tra cứu nếu cần | |
-| | **5.** Tìm kiếm các bản ghi phù hợp |
-| | **6.** Hiển thị lịch sử thao tác |
-| **7.** Xem thông tin Audit Log | |
-
-### Alternative flow
-
-**4.1 Người dùng nhập tiêu chí tra cứu:**
-
-1. Người dùng nhập các tiêu chí cần tìm.
-2. Hệ thống kiểm tra tiêu chí.
-3. Hệ thống thực hiện tìm kiếm.
-4. Quay lại bước 6.
-
-### Exception flow
-
-**2.1 Người dùng không có quyền tra cứu Audit Log:**
-
-1. Hệ thống từ chối truy cập.
-2. Hệ thống hiển thị thông báo không có quyền.
-3. Hệ thống ghi nhận thao tác truy cập bị từ chối.
-4. Kết thúc use case.
-
-**5.1 Không tìm thấy bản ghi Audit Log:**
-
-1. Hệ thống không tìm thấy bản ghi phù hợp.
-2. Hệ thống hiển thị thông báo không có dữ liệu.
-3. Người dùng có thể thay đổi tiêu chí tra cứu.
-
-**6.1 Không thể lưu Audit Log:**
-
-1. Hệ thống phát hiện lỗi khi lưu log.
-2. Hệ thống ghi nhận lỗi hệ thống.
-3. Hệ thống thực hiện cơ chế xử lý lỗi phù hợp.
-4. Kết thúc use case.
+1. Hệ thống hiển thị thông báo không có dữ liệu.
+2. Kết thúc use case.
