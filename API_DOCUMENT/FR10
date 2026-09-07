@@ -1,0 +1,153 @@
+openapi: 3.0.0
+
+info:
+  title: FR10 - Quản lý trạng thái đặt xe
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: Ride Booking
+
+paths:
+
+  /rides:
+    post:
+      summary: Tạo yêu cầu đặt xe và mã yêu cầu
+      operationId: taoYeuCauDatXe
+      tags:
+        - Ride Booking
+      security:
+        - bearerAuth: []
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RideRequest'
+
+      responses:
+        '201':
+          description: Tạo yêu cầu thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ride'
+
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /rides/{rideId}:
+    get:
+      summary: Xem trạng thái yêu cầu đặt xe
+      operationId: xemTrangThaiDatXe
+      tags:
+        - Ride Booking
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: rideId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        '200':
+          description: Thông tin yêu cầu đặt xe
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ride'
+
+        '404':
+          description: Không tìm thấy yêu cầu
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    RideRequest:
+      type: object
+      properties:
+        pickupLocation:
+          type: string
+        destination:
+          type: string
+        serviceType:
+          type: string
+          enum:
+            - motorcycle
+            - car
+        estimatedDistance:
+          type: number
+          format: double
+      required:
+        - pickupLocation
+        - destination
+        - serviceType
+
+    Ride:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        requestCode:
+          type: string
+        customerId:
+          type: integer
+          format: int64
+        driverId:
+          type: integer
+          format: int64
+          nullable: true
+        vehicleId:
+          type: integer
+          format: int64
+          nullable: true
+        pickupLocation:
+          type: string
+        destination:
+          type: string
+        serviceType:
+          type: string
+        status:
+          type: string
+          enum:
+            - requested
+            - searching_driver
+            - driver_assigned
+            - in_progress
+            - completed
+            - cancelled
+            - failed
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
