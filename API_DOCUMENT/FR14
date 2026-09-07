@@ -1,0 +1,85 @@
+openapi: 3.0.0
+
+info:
+  title: FR14 - Chuyển tài xế tiếp theo
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: Driver Assignment
+
+paths:
+
+  /rides/{rideId}/driver-matching:
+    post:
+      summary: Tiếp tục tìm Driver khác khi Driver từ chối hoặc không phản hồi
+      operationId: chuyenDriverTiepTheo
+      tags:
+        - Driver Assignment
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: rideId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        '200':
+          description: Kết quả phân công Driver tiếp theo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverAssignment'
+
+        '409':
+          description: Không còn Driver phù hợp
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    DriverAssignment:
+      type: object
+      properties:
+        rideId:
+          type: integer
+          format: int64
+        driverId:
+          type: integer
+          format: int64
+          nullable: true
+        status:
+          type: string
+          enum:
+            - searching
+            - assigned
+            - rejected
+            - no_response
+            - no_driver_available
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
