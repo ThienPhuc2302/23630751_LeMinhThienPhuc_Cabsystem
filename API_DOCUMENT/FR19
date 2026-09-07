@@ -1,0 +1,99 @@
+openapi: 3.0.0
+
+info:
+  title: FR19 - Cập nhật vị trí tài xế
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: Trip
+
+paths:
+
+  /trips/{tripId}/location:
+    post:
+      summary: Cập nhật vị trí Driver trong chuyến
+      operationId: capNhatViTriDriver
+      tags:
+        - Trip
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: tripId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationUpdateRequest'
+
+      responses:
+        '200':
+          description: Cập nhật vị trí thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+
+        '400':
+          description: Tọa độ không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    Location:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        recordedAt:
+          type: string
+          format: date-time
+
+    LocationUpdateRequest:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+      required:
+        - latitude
+        - longitude
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
