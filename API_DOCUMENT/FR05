@@ -1,0 +1,133 @@
+openapi: 3.0.0
+
+info:
+  title: FR05 - Quản lý tài khoản tài xế
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: Driver
+
+paths:
+
+  /drivers/me:
+    get:
+      summary: Xem thông tin tài khoản Driver
+      operationId: xemThongTinDriver
+      tags:
+        - Driver
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Thông tin Driver
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Driver'
+
+        '401':
+          description: Người dùng chưa được xác thực
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      summary: Cập nhật thông tin tài khoản Driver
+      operationId: capNhatThongTinDriver
+      tags:
+        - Driver
+      security:
+        - bearerAuth: []
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverUpdateRequest'
+
+      responses:
+        '200':
+          description: Cập nhật thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Driver'
+
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '401':
+          description: Người dùng chưa được xác thực
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    Driver:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        fullName:
+          type: string
+        phone:
+          type: string
+        activityStatus:
+          type: string
+          enum:
+            - online
+            - offline
+        availabilityStatus:
+          type: string
+          enum:
+            - available
+            - busy
+            - unavailable
+        rating:
+          type: number
+          format: float
+
+    DriverUpdateRequest:
+      type: object
+      properties:
+        fullName:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+          format: email
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
