@@ -1,0 +1,138 @@
+openapi: 3.0.0
+
+info:
+  title: FR06 - Quản lý phương tiện
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: Driver
+
+paths:
+
+  /drivers/me/vehicle:
+    get:
+      summary: Xem thông tin phương tiện
+      operationId: xemPhuongTien
+      tags:
+        - Driver
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Thông tin phương tiện
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vehicle'
+
+        '401':
+          description: Người dùng chưa được xác thực
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      summary: Cập nhật thông tin phương tiện
+      operationId: capNhatPhuongTien
+      tags:
+        - Driver
+      security:
+        - bearerAuth: []
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleUpdateRequest'
+
+      responses:
+        '200':
+          description: Cập nhật phương tiện thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vehicle'
+
+        '400':
+          description: Dữ liệu phương tiện không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '401':
+          description: Người dùng chưa được xác thực
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    Vehicle:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        driverId:
+          type: integer
+          format: int64
+        licensePlate:
+          type: string
+        vehicleType:
+          type: string
+          enum:
+            - motorcycle
+            - car
+        brand:
+          type: string
+        model:
+          type: string
+        color:
+          type: string
+
+    VehicleUpdateRequest:
+      type: object
+      properties:
+        licensePlate:
+          type: string
+        vehicleType:
+          type: string
+          enum:
+            - motorcycle
+            - car
+        brand:
+          type: string
+        model:
+          type: string
+        color:
+          type: string
+      required:
+        - licensePlate
+        - vehicleType
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
