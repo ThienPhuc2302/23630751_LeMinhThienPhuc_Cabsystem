@@ -1,0 +1,84 @@
+openapi: 3.0.0
+
+info:
+  title: FR21 - Tính cước chuyến đi
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: Payment
+
+paths:
+
+  /trips/{tripId}/fare:
+    get:
+      summary: Tính và xem cước chuyến đi
+      operationId: tinhCuocChuyenDi
+      tags:
+        - Payment
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: tripId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        '200':
+          description: Thông tin cước
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fare'
+
+        '404':
+          description: Không tìm thấy chuyến
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    Fare:
+      type: object
+      properties:
+        tripId:
+          type: integer
+          format: int64
+        serviceType:
+          type: string
+        distance:
+          type: number
+          format: double
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+          example: VND
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
