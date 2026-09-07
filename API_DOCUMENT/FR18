@@ -1,0 +1,109 @@
+openapi: 3.0.0
+
+info:
+  title: FR18 - Hiển thị thông tin tài xế
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: Trip
+
+paths:
+
+  /trips/{tripId}:
+    get:
+      summary: Hiển thị trạng thái và thông tin Driver của chuyến
+      operationId: xemThongTinDriverCuaChuyen
+      tags:
+        - Trip
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: tripId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        '200':
+          description: Thông tin chuyến và Driver
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trip'
+
+        '404':
+          description: Không tìm thấy chuyến
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    Trip:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        rideId:
+          type: integer
+          format: int64
+        customerId:
+          type: integer
+          format: int64
+        driverId:
+          type: integer
+          format: int64
+        vehicleId:
+          type: integer
+          format: int64
+        pickupLocation:
+          type: string
+        destination:
+          type: string
+        status:
+          $ref: '#/components/schemas/TripStatus'
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+          nullable: true
+
+    TripStatus:
+      type: string
+      enum:
+        - driver_assigned
+        - driver_arrived
+        - passenger_picked_up
+        - in_progress
+        - completed
+        - cancelled
+        - failed
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
