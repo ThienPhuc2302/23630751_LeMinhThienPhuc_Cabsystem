@@ -1,0 +1,90 @@
+openapi: 3.0.0
+
+info:
+  title: FR20 - Theo dõi vị trí tài xế
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: Trip
+
+paths:
+
+  /trips/{tripId}/tracking:
+    get:
+      summary: Hiển thị vị trí Driver và thời gian dự kiến đến
+      operationId: theoDoiViTriDriver
+      tags:
+        - Trip
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: tripId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        '200':
+          description: Thông tin theo dõi chuyến
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripTracking'
+
+        '404':
+          description: Không tìm thấy chuyến
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    Location:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        recordedAt:
+          type: string
+          format: date-time
+
+    TripTracking:
+      type: object
+      properties:
+        tripId:
+          type: integer
+          format: int64
+        driverLocation:
+          $ref: '#/components/schemas/Location'
+        estimatedArrivalMinutes:
+          type: integer
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
