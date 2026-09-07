@@ -1,0 +1,132 @@
+openapi: 3.0.0
+
+info:
+  title: FR01 - Đăng ký tài khoản
+  description: API thực hiện chức năng đăng ký tài khoản.
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+    description: Local Host
+
+tags:
+  - name: Authentication
+    description: Đăng ký, đăng nhập và đăng xuất
+
+paths:
+
+  /auth/register:
+    post:
+      summary: Đăng ký tài khoản mới
+      operationId: dangKyTaiKhoan
+      tags:
+        - Authentication
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+
+      responses:
+        '201':
+          description: Đăng ký tài khoản thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+        '400':
+          description: Thông tin đăng ký không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '409':
+          description: Tên đăng nhập hoặc email đã tồn tại
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '500':
+          description: Lỗi hệ thống
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+components:
+
+  schemas:
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        role:
+          type: string
+          enum:
+            - customer
+            - driver
+            - operations_staff
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+            - locked
+      required:
+        - id
+        - username
+        - email
+        - role
+        - status
+
+    RegisterRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+          format: password
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        role:
+          type: string
+          enum:
+            - customer
+            - driver
+      required:
+        - username
+        - password
+        - email
+        - phone
+        - role
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
