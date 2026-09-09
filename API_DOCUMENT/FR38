@@ -1,0 +1,82 @@
+openapi: 3.0.0
+
+info:
+  title: FR38 - Kiểm soát quyền truy cập
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: Security
+
+paths:
+
+  /auth/permissions:
+    get:
+      summary: Kiểm tra quyền truy cập của người dùng
+      operationId: kiemTraQuyenTruyCap
+      tags:
+        - Security
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Danh sách quyền được cấp
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionResponse'
+
+        '401':
+          description: Người dùng chưa được xác thực
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '403':
+          description: Người dùng không có quyền
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    PermissionResponse:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+        role:
+          type: string
+          enum:
+            - customer
+            - driver
+            - operations_staff
+        permissions:
+          type: array
+          items:
+            type: string
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
