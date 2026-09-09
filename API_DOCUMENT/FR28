@@ -1,0 +1,170 @@
+openapi: 3.0.0
+
+info:
+  title: FR28 - Quản lý dữ liệu vận hành
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: Operations
+
+paths:
+
+  /operations/customers:
+    get:
+      summary: Tra cứu và quản lý khách hàng
+      operationId: quanLyKhachHangVanHanh
+      tags:
+        - Operations
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Danh sách khách hàng
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+
+        '403':
+          description: Không có quyền truy cập
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /operations/drivers:
+    get:
+      summary: Tra cứu và quản lý tài xế
+      operationId: quanLyDriverVanHanh
+      tags:
+        - Operations
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Danh sách Driver
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Driver'
+
+        '403':
+          description: Không có quyền truy cập
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /operations/vehicles:
+    get:
+      summary: Tra cứu và quản lý phương tiện
+      operationId: quanLyPhuongTienVanHanh
+      tags:
+        - Operations
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Danh sách phương tiện
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Vehicle'
+
+        '403':
+          description: Không có quyền truy cập
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        fullName:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        status:
+          type: string
+
+    Driver:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        fullName:
+          type: string
+        phone:
+          type: string
+        activityStatus:
+          type: string
+        availabilityStatus:
+          type: string
+        rating:
+          type: number
+          format: float
+
+    Vehicle:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        driverId:
+          type: integer
+          format: int64
+        licensePlate:
+          type: string
+        vehicleType:
+          type: string
+        brand:
+          type: string
+        model:
+          type: string
+        color:
+          type: string
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
