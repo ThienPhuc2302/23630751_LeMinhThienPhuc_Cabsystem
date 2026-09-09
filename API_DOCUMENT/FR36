@@ -1,0 +1,110 @@
+openapi: 3.0.0
+
+info:
+  title: FR36 - Báo cáo hoạt động
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: Reports
+
+paths:
+
+  /reports/operations:
+    get:
+      summary: Xem báo cáo hoạt động theo khoảng thời gian
+      operationId: xemBaoCaoHoatDong
+      tags:
+        - Reports
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: fromDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+
+        - name: toDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+
+      responses:
+        '200':
+          description: Báo cáo hoạt động
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationalReport'
+
+        '400':
+          description: Khoảng thời gian không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '403':
+          description: Không có quyền truy cập
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    OperationalReport:
+      type: object
+      properties:
+        fromDate:
+          type: string
+          format: date
+        toDate:
+          type: string
+          format: date
+        totalTrips:
+          type: integer
+        completedTrips:
+          type: integer
+        cancelledTrips:
+          type: integer
+        failedTrips:
+          type: integer
+        totalRevenue:
+          type: number
+          format: double
+        completionRate:
+          type: number
+          format: double
+        cancellationRate:
+          type: number
+          format: double
+        driverEfficiency:
+          type: number
+          format: double
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
