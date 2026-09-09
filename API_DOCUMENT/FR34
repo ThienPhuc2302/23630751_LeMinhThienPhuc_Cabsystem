@@ -1,0 +1,150 @@
+openapi: 3.0.0
+
+info:
+  title: FR34 - Chi tiết chuyến đi
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: History
+
+paths:
+
+  /trips/{tripId}/details:
+    get:
+      summary: Xem chi tiết chuyến đi, cước và thanh toán
+      operationId: xemChiTietChuyenDi
+      tags:
+        - History
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: tripId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        '200':
+          description: Chi tiết chuyến đi
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripDetails'
+
+        '404':
+          description: Không tìm thấy chuyến
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    TripDetails:
+      type: object
+      properties:
+        trip:
+          $ref: '#/components/schemas/Trip'
+        fare:
+          $ref: '#/components/schemas/Fare'
+        payment:
+          $ref: '#/components/schemas/Payment'
+
+    Trip:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        rideId:
+          type: integer
+          format: int64
+        customerId:
+          type: integer
+          format: int64
+        driverId:
+          type: integer
+          format: int64
+        vehicleId:
+          type: integer
+          format: int64
+        pickupLocation:
+          type: string
+        destination:
+          type: string
+        status:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+          nullable: true
+
+    Fare:
+      type: object
+      properties:
+        tripId:
+          type: integer
+          format: int64
+        serviceType:
+          type: string
+        distance:
+          type: number
+          format: double
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+          example: VND
+
+    Payment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        tripId:
+          type: integer
+          format: int64
+        amount:
+          type: number
+          format: double
+        paymentMethod:
+          type: string
+        status:
+          type: string
+        transactionCode:
+          type: string
+          nullable: true
+        paidAt:
+          type: string
+          format: date-time
+          nullable: true
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
