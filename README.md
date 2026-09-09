@@ -79,7 +79,7 @@ Trong phạm vi MVP với thời gian triển khai **7 tuần**, hệ thống CA
 | **BR06** | Tìm & phân công tài xế | Hệ thống phải tự động tìm và lựa chọn tài xế phù hợp dựa trên trạng thái, vị trí và tiêu chí vận hành. |
 | **BR07** | Tìm & phân công tài xế | Hệ thống phải xử lý trường hợp tài xế chấp nhận, từ chối hoặc không phản hồi và tiếp tục tìm tài xế khác khi cần. |
 | **BR08** | Tìm & phân công tài xế | Hệ thống phải thông báo cho Customer khi không tìm được tài xế phù hợp. |
-| **BR09** | Quản lý & theo dõi chuyến | Hệ thống phải tạo và quản lý chuyến đi sau khi tài xế nhận yêu cầu. |
+| **BR09** | Quản lý & theo dõi chuyến | Hệ thống phải tạo chuyến đi và liên kết chuyến với Customer, Driver và phương tiện sau khi Driver nhận yêu cầu. |
 | **BR10** | Quản lý & theo dõi chuyến | Hệ thống phải cho phép Driver cập nhật các trạng thái chính của chuyến đi và cung cấp thông tin chuyến cho Customer. |
 | **BR11** | Quản lý & theo dõi chuyến | Hệ thống phải hỗ trợ cập nhật và hiển thị thông tin vị trí, thời gian dự kiến và trạng thái chuyến trong phạm vi cho phép. |
 | **BR12** | Tính cước & thanh toán | Hệ thống phải tính và lưu cước chuyến đi dựa trên loại dịch vụ và thông tin chuyến. |
@@ -91,7 +91,7 @@ Trong phạm vi MVP với thời gian triển khai **7 tuần**, hệ thống CA
 | **BR18** | Lịch sử & đánh giá | Hệ thống phải lưu trữ lịch sử chuyến đi, thông tin thanh toán và cho phép Customer đánh giá Driver sau chuyến. |
 | **BR19** | Báo cáo | Hệ thống phải cung cấp các báo cáo cơ bản về số lượng chuyến, doanh thu, tỷ lệ hoàn thành, tỷ lệ hủy và hiệu quả hoạt động của Driver. |
 | **BR20** | Bảo mật & phân quyền | Hệ thống phải xác thực người dùng, phân quyền theo vai trò và bảo vệ dữ liệu khỏi truy cập trái phép. |
-| **BR21** | Bảo mật & phân quyền | Hệ thống phải lưu vết các thao tác quan trọng để phục vụ kiểm tra và xử lý sự cố. |
+| **BR21** | Audit Log | Hệ thống phải lưu vết các thao tác quan trọng để phục vụ kiểm tra và xử lý sự cố. |
 
 # 6. Functional Requirements
 
