@@ -1,0 +1,131 @@
+openapi: 3.0.0
+
+info:
+  title: FR31 - Xử lý trạng thái chuyến
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: Operations
+
+paths:
+
+  /operations/trips/{tripId}/status:
+    put:
+      summary: Cập nhật trạng thái chuyến theo quyền vận hành
+      operationId: xuLyTrangThaiChuyen
+      tags:
+        - Operations
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: tripId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TripStatusUpdateRequest'
+
+      responses:
+        '200':
+          description: Cập nhật trạng thái thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trip'
+
+        '400':
+          description: Trạng thái không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '403':
+          description: Không có quyền cập nhật
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    TripStatus:
+      type: string
+      enum:
+        - driver_assigned
+        - driver_arrived
+        - passenger_picked_up
+        - in_progress
+        - completed
+        - cancelled
+        - failed
+
+    TripStatusUpdateRequest:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/TripStatus'
+      required:
+        - status
+
+    Trip:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        rideId:
+          type: integer
+          format: int64
+        customerId:
+          type: integer
+          format: int64
+        driverId:
+          type: integer
+          format: int64
+        vehicleId:
+          type: integer
+          format: int64
+        pickupLocation:
+          type: string
+        destination:
+          type: string
+        status:
+          $ref: '#/components/schemas/TripStatus'
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+          nullable: true
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
