@@ -1,0 +1,131 @@
+openapi: 3.0.0
+
+info:
+  title: FR37 - Xác thực và phân quyền
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: Security
+
+paths:
+
+  /auth/me:
+    get:
+      summary: Xác thực người dùng hiện tại
+      operationId: xacThucNguoiDung
+      tags:
+        - Security
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Người dùng đã được xác thực
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+        '401':
+          description: Token không hợp lệ hoặc hết hạn
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /auth/permissions:
+    get:
+      summary: Xem quyền truy cập theo vai trò
+      operationId: xemQuyenTruyCap
+      tags:
+        - Security
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Thông tin quyền
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionResponse'
+
+        '401':
+          description: Người dùng chưa được xác thực
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        role:
+          type: string
+          enum:
+            - customer
+            - driver
+            - operations_staff
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+            - locked
+      required:
+        - id
+        - username
+        - email
+        - role
+        - status
+
+    PermissionResponse:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+        role:
+          type: string
+          enum:
+            - customer
+            - driver
+            - operations_staff
+        permissions:
+          type: array
+          items:
+            type: string
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+      required:
+        - error_code
+        - message
