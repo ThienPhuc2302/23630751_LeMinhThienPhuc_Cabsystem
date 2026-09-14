@@ -201,10 +201,368 @@ Functional Requirements (FR) được phân rã từ **21 Business Requirements 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
 | **FR40** | BR21 | Hệ thống ghi nhận các thao tác quan trọng của người dùng và cho phép người dùng có quyền tra cứu lịch sử thao tác phục vụ kiểm tra và xử lý sự cố. |
-## 7. Usecase tổng quát
+
+## 7. Acceptance Criteria
+
+## 7.1. Chức năng dùng chung
+
+### FR01 – Đăng ký tài khoản
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC01.1 | **Given** người dùng nhập đầy đủ thông tin hợp lệ, **When** thực hiện đăng ký, **Then** hệ thống tạo tài khoản thành công. |
+| AC01.2 | **Given** thông tin đăng ký không hợp lệ hoặc tài khoản đã tồn tại, **When** thực hiện đăng ký, **Then** hệ thống từ chối đăng ký và thông báo lỗi. |
+
+### FR02 – Đăng nhập
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC02.1 | **Given** Customer, Driver hoặc Operations Staff có tài khoản hợp lệ, **When** nhập đúng thông tin đăng nhập, **Then** hệ thống cho phép đăng nhập thành công. |
+| AC02.2 | **Given** thông tin đăng nhập không chính xác, **When** người dùng đăng nhập, **Then** hệ thống từ chối đăng nhập và thông báo lỗi. |
+| AC02.3 | **Given** người dùng đăng nhập thành công, **Then** hệ thống xác định đúng vai trò của người dùng. |
+
+### FR03 – Đăng xuất
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC03.1 | **Given** người dùng đã đăng nhập, **When** thực hiện đăng xuất, **Then** hệ thống kết thúc phiên đăng nhập. |
+| AC03.2 | **Given** người dùng đã đăng xuất, **When** truy cập chức năng yêu cầu đăng nhập, **Then** hệ thống không cho phép truy cập. |
+
+---
+
+## 7.2. Quản lý khách hàng
+
+### FR04 – Xem và cập nhật thông tin cá nhân
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC04.1 | **Given** Customer đã đăng nhập, **When** yêu cầu xem thông tin cá nhân, **Then** hệ thống hiển thị đúng thông tin của Customer. |
+| AC04.2 | **Given** Customer nhập thông tin cập nhật hợp lệ, **When** thực hiện cập nhật, **Then** hệ thống lưu thông tin mới thành công. |
+| AC04.3 | **Given** thông tin cập nhật không hợp lệ, **When** thực hiện cập nhật, **Then** hệ thống từ chối và thông báo lỗi. |
+
+---
+
+## 7.3. Quản lý tài xế và phương tiện
+
+### FR05 – Xem và cập nhật thông tin tài xế
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC05.1 | **Given** Driver đã đăng nhập, **When** yêu cầu xem thông tin cá nhân, **Then** hệ thống hiển thị đúng thông tin của Driver. |
+| AC05.2 | **Given** Driver nhập thông tin cập nhật hợp lệ, **When** thực hiện cập nhật, **Then** hệ thống lưu thông tin mới thành công. |
+| AC05.3 | **Given** thông tin cập nhật không hợp lệ, **When** thực hiện cập nhật, **Then** hệ thống từ chối và thông báo lỗi. |
+
+### FR06 – Xem và cập nhật thông tin phương tiện
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC06.1 | **Given** Driver đã đăng nhập, **When** yêu cầu xem thông tin phương tiện, **Then** hệ thống hiển thị thông tin phương tiện của Driver. |
+| AC06.2 | **Given** Driver nhập thông tin phương tiện hợp lệ, **When** thực hiện cập nhật, **Then** hệ thống lưu thông tin phương tiện thành công. |
+| AC06.3 | **Given** thông tin phương tiện không hợp lệ, **When** thực hiện cập nhật, **Then** hệ thống từ chối và thông báo lỗi. |
+
+### FR07 – Cập nhật trạng thái hoạt động và khả dụng
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC07.1 | **Given** Driver đã đăng nhập, **When** cập nhật trạng thái hoạt động hoặc khả dụng hợp lệ, **Then** hệ thống lưu trạng thái mới. |
+| AC07.2 | **Given** trạng thái được cập nhật thành công, **Then** hệ thống sử dụng trạng thái mới cho việc tìm kiếm và phân công chuyến. |
+| AC07.3 | **Given** trạng thái không hợp lệ, **When** Driver thực hiện cập nhật, **Then** hệ thống từ chối yêu cầu. |
+
+---
+
+## 7.4. Đặt xe
+
+### FR08 – Nhập thông tin yêu cầu đặt xe
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC08.1 | **Given** Customer đã đăng nhập, **When** nhập điểm đón, điểm đến và lựa chọn loại xe/dịch vụ, **Then** hệ thống tiếp nhận thông tin đặt xe. |
+| AC08.2 | **Given** thiếu thông tin bắt buộc, **When** Customer gửi yêu cầu đặt xe, **Then** hệ thống không cho phép tiếp tục và yêu cầu bổ sung thông tin. |
+
+### FR09 – Kiểm tra và xác nhận yêu cầu đặt xe
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC09.1 | **Given** thông tin đặt xe đầy đủ, **When** Customer gửi yêu cầu, **Then** hệ thống kiểm tra tính hợp lệ của thông tin. |
+| AC09.2 | **Given** thông tin hợp lệ, **Then** hệ thống hiển thị thông tin yêu cầu để Customer xác nhận. |
+| AC09.3 | **Given** thông tin không hợp lệ, **Then** hệ thống thông báo lỗi và yêu cầu Customer chỉnh sửa. |
+
+### FR10 – Tạo và quản lý yêu cầu đặt xe
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC10.1 | **Given** Customer xác nhận yêu cầu hợp lệ, **When** hệ thống tạo yêu cầu, **Then** hệ thống tạo một mã yêu cầu duy nhất. |
+| AC10.2 | **Given** yêu cầu đã được tạo, **Then** hệ thống lưu và quản lý trạng thái của yêu cầu trong suốt quá trình xử lý. |
+| AC10.3 | **Given** trạng thái yêu cầu thay đổi, **Then** hệ thống cập nhật trạng thái mới tương ứng. |
+
+---
+
+## 7.5. Tìm kiếm và phân công tài xế
+
+### FR11 – Tự động tìm kiếm tài xế phù hợp
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC11.1 | **Given** có yêu cầu đặt xe cần phân công, **When** hệ thống bắt đầu tìm kiếm, **Then** hệ thống chỉ xem xét các Driver đáp ứng trạng thái hoạt động và khả dụng. |
+| AC11.2 | **Given** Driver có thông tin vị trí hợp lệ, **Then** hệ thống sử dụng thông tin vị trí để hỗ trợ tìm kiếm Driver phù hợp. |
+
+### FR12 – Lựa chọn và ưu tiên tài xế
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC12.1 | **Given** hệ thống tìm được nhiều Driver phù hợp, **When** thực hiện lựa chọn, **Then** hệ thống áp dụng các tiêu chí vận hành đã quy định. |
+| AC12.2 | **Given** danh sách Driver phù hợp, **Then** hệ thống lựa chọn/ưu tiên Driver theo các tiêu chí được áp dụng. |
+
+### FR13 – Gửi yêu cầu và ghi nhận phản hồi của tài xế
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC13.1 | **Given** hệ thống đã chọn Driver phù hợp, **When** gửi yêu cầu chuyến xe, **Then** Driver nhận được yêu cầu. |
+| AC13.2 | **Given** Driver phản hồi nhận chuyến, **Then** hệ thống ghi nhận trạng thái chấp nhận. |
+| AC13.3 | **Given** Driver từ chối hoặc không phản hồi trong thời gian quy định, **Then** hệ thống ghi nhận trạng thái tương ứng. |
+
+### FR14 – Chuyển sang tài xế tiếp theo
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC14.1 | **Given** Driver được đề xuất từ chối chuyến, **When** hệ thống xử lý phản hồi, **Then** hệ thống tự động chuyển sang Driver phù hợp tiếp theo. |
+| AC14.2 | **Given** Driver không phản hồi trong thời gian quy định, **When** thời gian chờ kết thúc, **Then** hệ thống chuyển sang Driver phù hợp tiếp theo. |
+| AC14.3 | **Given** còn Driver phù hợp, **Then** hệ thống tiếp tục quá trình phân công. |
+
+### FR15 – Thông báo không tìm được tài xế
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC15.1 | **Given** hệ thống đã thử phân công và không còn Driver phù hợp, **Then** hệ thống xác định yêu cầu không thể phân công. |
+| AC15.2 | **Then** hệ thống thông báo cho Customer rằng chưa tìm được Driver phù hợp. |
+
+---
+
+## 7.6. Quản lý và theo dõi chuyến
+
+### FR16 – Tạo chuyến
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC16.1 | **Given** Driver chấp nhận yêu cầu đặt xe, **When** hệ thống xử lý phản hồi, **Then** hệ thống tạo chuyến xe. |
+| AC16.2 | **Then** chuyến xe được liên kết đúng với Customer, Driver và phương tiện tương ứng. |
+
+### FR17 – Cập nhật trạng thái chuyến
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC17.1 | **Given** Driver đang thực hiện chuyến, **When** cập nhật trạng thái hợp lệ, **Then** hệ thống lưu trạng thái mới. |
+| AC17.2 | **Then** hệ thống hỗ trợ cập nhật các trạng thái chính như tài xế đã đến, đã đón khách, đang thực hiện chuyến và hoàn thành. |
+| AC17.3 | **Given** trạng thái cập nhật không hợp lệ, **Then** hệ thống từ chối yêu cầu. |
+
+### FR18 – Customer theo dõi trạng thái chuyến
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC18.1 | **Given** Customer có chuyến đang được xử lý, **When** xem thông tin chuyến, **Then** hệ thống hiển thị trạng thái hiện tại của chuyến. |
+| AC18.2 | **Then** hệ thống hiển thị thông tin Driver được phân công cho chuyến. |
+| AC18.3 | **Given** trạng thái chuyến thay đổi, **Then** Customer có thể xem trạng thái mới. |
+
+### FR19 – Cập nhật vị trí tài xế
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC19.1 | **Given** Driver đang thực hiện chuyến, **When** hệ thống nhận dữ liệu vị trí, **Then** hệ thống cập nhật vị trí mới của Driver. |
+| AC19.2 | **Then** hệ thống lưu thông tin vị trí mới để phục vụ việc theo dõi chuyến. |
+
+### FR20 – Hiển thị vị trí và thời gian dự kiến
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC20.1 | **Given** hệ thống có dữ liệu vị trí Driver, **When** Customer xem chuyến, **Then** hệ thống hiển thị vị trí hiện tại của Driver. |
+| AC20.2 | **Then** hệ thống hiển thị thời gian dự kiến đến dựa trên dữ liệu vị trí có được. |
+| AC20.3 | **Given** chưa có dữ liệu vị trí phù hợp, **Then** hệ thống không hiển thị dữ liệu vị trí không hợp lệ. |
+
+---
+
+## 7.7. Tính cước và thanh toán
+
+### FR21 – Tính và lưu cước chuyến
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC21.1 | **Given** chuyến có đầy đủ thông tin cần thiết, **When** hệ thống tính cước, **Then** hệ thống tính số tiền dựa trên loại dịch vụ và thông tin chuyến. |
+| AC21.2 | **Then** hệ thống lưu số tiền cước tương ứng với chuyến. |
+
+### FR22 – Lựa chọn phương thức thanh toán
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC22.1 | **Given** Customer thực hiện thanh toán, **When** lựa chọn phương thức thanh toán, **Then** hệ thống cho phép lựa chọn tiền mặt hoặc thanh toán điện tử. |
+| AC22.2 | **Then** hệ thống lưu phương thức thanh toán được Customer lựa chọn. |
+
+### FR23 – Thực hiện thanh toán điện tử
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC23.1 | **Given** Customer chọn thanh toán điện tử, **When** thực hiện thanh toán, **Then** hệ thống gửi yêu cầu thanh toán đến nhà cung cấp thanh toán bên ngoài. |
+| AC23.2 | **Given** nhà cung cấp thanh toán trả kết quả, **Then** hệ thống tiếp nhận và lưu kết quả thanh toán. |
+
+### FR24 – Cập nhật trạng thái giao dịch và thông báo kết quả
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC24.1 | **Given** hệ thống nhận được kết quả thanh toán, **Then** hệ thống cập nhật trạng thái giao dịch tương ứng. |
+| AC24.2 | **Then** hệ thống thông báo kết quả thanh toán cho Customer. |
+| AC24.3 | **Given** thanh toán thất bại, **Then** trạng thái giao dịch được ghi nhận là thất bại. |
+
+### FR25 – Thử lại thanh toán điện tử
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC25.1 | **Given** giao dịch thanh toán điện tử thất bại, **When** Customer thực hiện thử lại theo chính sách, **Then** hệ thống cho phép gửi lại yêu cầu thanh toán. |
+| AC25.2 | **Then** hệ thống ghi nhận kết quả của lần thanh toán thử lại. |
+
+---
+
+## 7.8. Thông báo
+
+### FR26 – Thông báo cho Customer
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC26.1 | **Given** yêu cầu đặt xe được tiếp nhận, **Then** hệ thống gửi thông báo cho Customer. |
+| AC26.2 | **Given** Driver được phân công/chấp nhận chuyến, **Then** hệ thống gửi thông báo cho Customer. |
+| AC26.3 | **Given** Driver đã đến, chuyến hoàn thành hoặc thanh toán có kết quả, **Then** hệ thống gửi thông báo tương ứng cho Customer. |
+
+### FR27 – Thông báo cho Driver
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC27.1 | **Given** có yêu cầu chuyến xe mới phù hợp, **Then** hệ thống gửi thông báo cho Driver được đề xuất. |
+| AC27.2 | **Given** có thay đổi quan trọng liên quan đến chuyến, **Then** hệ thống gửi thông báo tương ứng cho Driver. |
+
+---
+
+## 7.9. Quản lý vận hành
+
+### FR28 – Quản lý khách hàng, tài xế và phương tiện
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC28.1 | **Given** Operations Staff có quyền phù hợp, **When** thực hiện tra cứu, **Then** hệ thống hiển thị thông tin Customer, Driver hoặc phương tiện. |
+| AC28.2 | **Given** Operations Staff có quyền phù hợp, **When** thực hiện quản lý thông tin, **Then** hệ thống cho phép thực hiện thao tác được cấp quyền. |
+| AC28.3 | **Given** người dùng không có quyền phù hợp, **Then** hệ thống từ chối thao tác quản lý. |
+
+### FR29 – Theo dõi các chuyến đang diễn ra
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC29.1 | **Given** Operations Staff có quyền truy cập, **When** xem danh sách chuyến đang diễn ra, **Then** hệ thống hiển thị danh sách các chuyến tương ứng. |
+| AC29.2 | **Then** hệ thống hiển thị trạng thái hiện tại của từng chuyến. |
+| AC29.3 | **Given** trạng thái chuyến thay đổi, **Then** thông tin hiển thị được cập nhật tương ứng. |
+
+### FR30 – Tra cứu chuyến có lỗi/bất thường
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC30.1 | **Given** Operations Staff có quyền truy cập, **When** thực hiện tra cứu, **Then** hệ thống hiển thị các chuyến có lỗi hoặc bất thường theo điều kiện tìm kiếm. |
+| AC30.2 | **Then** hệ thống hiển thị thông tin cần thiết để Operations Staff kiểm tra chuyến. |
+
+### FR31 – Xử lý và cập nhật trạng thái chuyến
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC31.1 | **Given** Operations Staff có quyền xử lý chuyến, **When** cập nhật trạng thái hợp lệ, **Then** hệ thống lưu trạng thái mới. |
+| AC31.2 | **Given** Operations Staff không có quyền, **When** thực hiện cập nhật, **Then** hệ thống từ chối thao tác. |
+| AC31.3 | **Then** thay đổi trạng thái được ghi nhận trong hệ thống. |
+
+### FR32 – Tra cứu thông tin giao dịch
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC32.1 | **Given** Operations Staff có quyền truy cập, **When** tra cứu giao dịch, **Then** hệ thống hiển thị thông tin giao dịch phù hợp với điều kiện tìm kiếm. |
+| AC32.2 | **Then** hệ thống cho phép xem lịch sử giao dịch. |
+| AC32.3 | **Given** người dùng không có quyền, **Then** hệ thống không cho phép truy cập thông tin giao dịch. |
+
+---
+
+## 7.10. Lịch sử và đánh giá
+
+### FR33 – Lưu và tra cứu lịch sử chuyến
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC33.1 | **Given** chuyến xe được ghi nhận trong hệ thống, **Then** thông tin chuyến được lưu vào lịch sử. |
+| AC33.2 | **Given** Customer đã đăng nhập, **When** xem lịch sử chuyến, **Then** hệ thống hiển thị các chuyến thuộc Customer đó. |
+
+### FR34 – Xem chi tiết chuyến và thanh toán
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC34.1 | **Given** Customer chọn một chuyến trong lịch sử, **When** xem chi tiết, **Then** hệ thống hiển thị thông tin chi tiết của chuyến. |
+| AC34.2 | **Then** hệ thống hiển thị số tiền cước của chuyến. |
+| AC34.3 | **Then** hệ thống hiển thị trạng thái thanh toán của chuyến. |
+
+### FR35 – Đánh giá tài xế
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC35.1 | **Given** chuyến đã hoàn thành, **When** Customer thực hiện đánh giá Driver, **Then** hệ thống cho phép Customer gửi đánh giá hợp lệ. |
+| AC35.2 | **Then** hệ thống lưu kết quả đánh giá gắn với chuyến và Driver tương ứng. |
+| AC35.3 | **Given** chuyến chưa hoàn thành, **Then** hệ thống không cho phép Customer đánh giá Driver. |
+
+---
+
+## 7.11. Báo cáo
+
+### FR36 – Thống kê và báo cáo
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC36.1 | **Given** người dùng có quyền xem báo cáo, **When** chọn khoảng thời gian và tiêu chí thống kê, **Then** hệ thống tạo báo cáo tương ứng. |
+| AC36.2 | **Then** báo cáo thể hiện số lượng chuyến, doanh thu, tỷ lệ hoàn thành và tỷ lệ hủy chuyến. |
+| AC36.3 | **Then** báo cáo có thể thể hiện hiệu quả hoạt động của Driver theo tiêu chí được lựa chọn. |
+
+---
+
+## 7.12. Bảo mật và phân quyền
+
+### FR37 – Xác thực và phân quyền người dùng
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC37.1 | **Given** người dùng đăng nhập, **Then** hệ thống xác thực thông tin tài khoản trước khi cho phép truy cập. |
+| AC37.2 | **Then** hệ thống xác định quyền truy cập dựa trên vai trò Customer, Driver hoặc Operations Staff. |
+| AC37.3 | **Given** thông tin xác thực không hợp lệ, **Then** hệ thống không cho phép truy cập. |
+
+### FR38 – Ngăn chặn truy cập chức năng ngoài quyền
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC38.1 | **Given** người dùng không có quyền thực hiện một chức năng, **When** cố gắng truy cập, **Then** hệ thống từ chối truy cập. |
+| AC38.2 | **Given** người dùng có quyền phù hợp, **When** truy cập chức năng, **Then** hệ thống cho phép thực hiện chức năng đó. |
+
+### FR39 – Bảo vệ dữ liệu
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC39.1 | **Given** người dùng không có quyền, **When** cố gắng truy cập dữ liệu cá nhân, phương tiện, vị trí hoặc giao dịch, **Then** hệ thống từ chối truy cập. |
+| AC39.2 | **Given** người dùng có quyền phù hợp, **Then** hệ thống chỉ cung cấp dữ liệu nằm trong phạm vi quyền được cấp. |
+| AC39.3 | **Then** dữ liệu được bảo vệ khỏi việc truy cập hoặc sử dụng trái phép. |
+
+---
+
+## 7.13. Audit Log
+
+### FR40 – Ghi nhận và tra cứu lịch sử thao tác
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC40.1 | **Given** người dùng thực hiện một thao tác quan trọng, **Then** hệ thống ghi nhận thao tác vào Audit Log. |
+| AC40.2 | **Then** Audit Log lưu được thông tin cần thiết về người thực hiện, thao tác, đối tượng và thời điểm thực hiện. |
+| AC40.3 | **Given** người dùng có quyền tra cứu Audit Log, **When** thực hiện tìm kiếm, **Then** hệ thống hiển thị lịch sử thao tác phù hợp. |
+| AC40.4 | **Given** người dùng không có quyền, **When** cố gắng truy cập Audit Log, **Then** hệ thống từ chối truy cập. |
+
+##8. Usecase tổng quát
 <img width="824" height="814" alt="USECASE TỔNG QUÁT CAB SYSTEM" src="https://github.com/user-attachments/assets/f259d14a-d2ed-4a0d-a71d-65c7012de071" />
 
-# 8. Đặc tả Use Case
+##9. Đặc tả Use Case
 
 ## UC01 – Đăng ký tài khoản
 
