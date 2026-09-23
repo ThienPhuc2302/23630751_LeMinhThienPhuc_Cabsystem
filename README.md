@@ -155,7 +155,7 @@ Functional Requirements (FR) được phân rã từ **21 Business Requirements 
 | **FR22** | BR13 | Hệ thống cho phép Customer lựa chọn phương thức thanh toán bằng tiền mặt hoặc thanh toán điện tử và lưu phương thức được lựa chọn. |
 | **FR23** | BR13 | Đối với thanh toán tiền mặt, hệ thống cho phép Driver xác nhận đã nhận tiền từ Customer và ghi nhận kết quả thanh toán. |
 | **FR24** | BR13 | Đối với thanh toán điện tử, hệ thống gửi yêu cầu thanh toán đến Payment Provider, tiếp nhận kết quả và cập nhật trạng thái giao dịch. |
-| **FR25** | BR14 | Hệ thống thông báo kết quả thanh toán cho Customer và cho phép thực hiện lại thanh toán điện tử khi giao dịch thất bại. |
+| **FR25** | BR14 | Hệ thống hiển thị kết quả thanh toán cho Customer và cho phép thực hiện lại thanh toán điện tử khi giao dịch thất bại. |
 
 ## 6.8. Thông báo
 
@@ -415,8 +415,8 @@ Functional Requirements (FR) được phân rã từ **21 Business Requirements 
 
 | AC ID | Acceptance Criteria |
 |:---:|:---|
-| AC25.1 | **Given** giao dịch đã có kết quả, **When** hệ thống cập nhật trạng thái giao dịch, **Then** hệ thống thông báo kết quả thanh toán cho Customer. | 
-| AC25.2 | **Given** giao dịch thanh toán điện tử thất bại, **When** Customer thực hiện thử lại theo chính sách, **Then** hệ thống cho phép gửi lại yêu cầu thanh toán và ghi nhận kết quả mới. |
+| AC25.1 | **Given** giao dịch đã có kết quả, **When** hệ thống cập nhật trạng thái giao dịch, **Then** hệ thống hiển thị kết quả thanh toán cho Customer. |
+| AC25.2 | **Given** giao dịch thanh toán điện tử thất bại, **When** Customer thực hiện thử lại theo chính sách, **Then** hệ thống cho phép gửi lại yêu cầu thanh toán và ghi nhận kết quả mới. |tôi sửa ru
 
 ---
 
@@ -933,10 +933,10 @@ Không
 | **1.** Chọn yêu cầu đặt xe hoặc chuyến đi cần hủy | |
 | | **2.** Hiển thị thông tin và trạng thái hiện tại của yêu cầu/chuyến đi |
 | **3.** Chọn chức năng “Hủy” | |
-| | **4.** Kiểm tra trạng thái và điều kiện hủy |
+| | **4.** Kiểm tra trạng thái và điều kiện hủy. Chỉ cho phép hủy khi trạng thái là `requested`, `searching_driver` hoặc `driver_assigned` |
 | | **5.** Hiển thị thông báo xác nhận hủy |
 | **6.** Xác nhận hủy | |
-| | **7.** Cập nhật trạng thái yêu cầu/chuyến đi thành “Đã hủy” |
+| | **7.** Cập nhật trạng thái yêu cầu/chuyến đi thành `cancelled` |
 | | **8.** Lưu thông tin hủy |
 | | **9.** Hiển thị thông báo hủy thành công |
 
@@ -944,9 +944,10 @@ Không
 
 **4.1 Yêu cầu/chuyến đi không đủ điều kiện hủy:**
 
-1. Hệ thống thông báo yêu cầu/chuyến đi không thể hủy ở trạng thái hiện tại.
-2. Hệ thống giữ nguyên trạng thái yêu cầu/chuyến đi.
-3. Kết thúc use case.
+1. Nếu trạng thái của yêu cầu/chuyến đi là `in_progress`, `completed` hoặc `cancelled`, hệ thống không cho phép hủy.
+2. Hệ thống thông báo yêu cầu/chuyến đi không thể hủy ở trạng thái hiện tại.
+3. Hệ thống giữ nguyên trạng thái yêu cầu/chuyến đi.
+4. Kết thúc use case.
 
 **6.1 Customer không xác nhận hủy:**
 
