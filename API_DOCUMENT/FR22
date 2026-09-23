@@ -12,25 +12,33 @@ tags:
 
 paths:
 
-  /payments:
-    post:
-      summary: Lựa chọn phương thức thanh toán
+  /rides/{rideId}/payment-method:
+    patch:
+      summary: Lựa chọn phương thức thanh toán cho chuyến đi
       operationId: chonPhuongThucThanhToan
       tags:
         - Payment
       security:
         - bearerAuth: []
 
+      parameters:
+        - name: rideId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PaymentRequest'
+              $ref: '#/components/schemas/PaymentMethodRequest'
 
       responses:
-        '201':
-          description: Tạo yêu cầu thanh toán
+        '200':
+          description: Lựa chọn phương thức thanh toán thành công
           content:
             application/json:
               schema:
@@ -38,6 +46,20 @@ paths:
 
         '400':
           description: Phương thức thanh toán không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '403':
+          description: Customer không có quyền thay đổi phương thức thanh toán của chuyến đi này
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '404':
+          description: Không tìm thấy chuyến đi
           content:
             application/json:
               schema:
@@ -53,28 +75,24 @@ components:
 
   schemas:
 
-    PaymentRequest:
+    PaymentMethodRequest:
       type: object
       properties:
-        tripId:
-          type: integer
-          format: int64
         paymentMethod:
           type: string
           enum:
             - cash
             - electronic
       required:
-        - tripId
         - paymentMethod
 
     Payment:
       type: object
       properties:
-        id:
+        rideId:
           type: integer
           format: int64
-        tripId:
+        customerId:
           type: integer
           format: int64
         amount:
@@ -85,20 +103,12 @@ components:
           enum:
             - cash
             - electronic
-        status:
+        paymentStatus:
           type: string
           enum:
             - pending
-            - processing
-            - successful
+            - success
             - failed
-        transactionCode:
-          type: string
-          nullable: true
-        paidAt:
-          type: string
-          format: date-time
-          nullable: true
 
     Error:
       type: object
