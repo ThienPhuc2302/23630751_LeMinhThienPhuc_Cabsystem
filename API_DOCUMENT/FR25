@@ -1,7 +1,7 @@
 openapi: 3.0.0
 
 info:
-  title: FR25 - Thử lại thanh toán
+  title: FR25 - Thông báo kết quả và thử lại thanh toán điện tử
   version: 1.0.0
 
 servers:
@@ -12,17 +12,17 @@ tags:
 
 paths:
 
-  /payments/{paymentId}/retry:
-    post:
-      summary: Thực hiện lại thanh toán
-      operationId: thuLaiThanhToan
+  /rides/{rideId}/payment-result:
+    get:
+      summary: Xem kết quả thanh toán của chuyến đi
+      operationId: xemKetQuaThanhToan
       tags:
         - Payment
       security:
         - bearerAuth: []
 
       parameters:
-        - name: paymentId
+        - name: rideId
           in: path
           required: true
           schema:
@@ -31,21 +31,74 @@ paths:
 
       responses:
         '200':
-          description: Yêu cầu thanh toán lại được tiếp nhận
+          description: Lấy kết quả thanh toán thành công
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Payment'
 
-        '400':
-          description: Không thể thực hiện lại thanh toán
+        '403':
+          description: Customer không có quyền xem kết quả thanh toán của chuyến đi này
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
 
         '404':
-          description: Không tìm thấy giao dịch
+          description: Không tìm thấy chuyến đi hoặc giao dịch thanh toán
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /rides/{rideId}/electronic-payment/retry:
+    post:
+      summary: Thử lại thanh toán điện tử khi giao dịch thất bại
+      operationId: thuLaiThanhToanDienTu
+      tags:
+        - Payment
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: rideId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        '200':
+          description: Thử lại thanh toán điện tử thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+
+        '400':
+          description: Giao dịch không ở trạng thái thất bại hoặc không đủ điều kiện thử lại
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '403':
+          description: Customer không có quyền thực hiện lại thanh toán cho chuyến đi này
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '404':
+          description: Không tìm thấy chuyến đi hoặc giao dịch thanh toán
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '502':
+          description: Không nhận được kết quả hợp lệ từ nhà cung cấp thanh toán
           content:
             application/json:
               schema:
@@ -64,10 +117,10 @@ components:
     Payment:
       type: object
       properties:
-        id:
+        rideId:
           type: integer
           format: int64
-        tripId:
+        customerId:
           type: integer
           format: int64
         amount:
@@ -78,16 +131,18 @@ components:
           enum:
             - cash
             - electronic
-        status:
+        paymentStatus:
           type: string
           enum:
             - pending
-            - processing
-            - successful
+            - success
             - failed
-        transactionCode:
+        providerTransactionId:
           type: string
           nullable: true
+        retryCount:
+          type: integer
+          example: 1
         paidAt:
           type: string
           format: date-time
