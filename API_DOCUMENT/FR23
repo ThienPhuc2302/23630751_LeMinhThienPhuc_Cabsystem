@@ -1,7 +1,7 @@
 openapi: 3.0.0
 
 info:
-  title: FR23 - Thanh toán điện tử
+  title: FR23 - Thanh toán bằng tiền mặt
   version: 1.0.0
 
 servers:
@@ -12,39 +12,54 @@ tags:
 
 paths:
 
-  /payments:
-    post:
-      summary: Gửi yêu cầu thanh toán điện tử
-      operationId: thanhToanDienTu
+  /rides/{rideId}/cash-payment/confirm:
+    patch:
+      summary: Driver xác nhận đã nhận tiền mặt từ Customer
+      operationId: xacNhanThanhToanTienMat
       tags:
         - Payment
       security:
         - bearerAuth: []
 
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PaymentRequest'
+      parameters:
+        - name: rideId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
 
       responses:
-        '201':
-          description: Yêu cầu thanh toán được tiếp nhận
+        '200':
+          description: Xác nhận thanh toán tiền mặt thành công
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Payment'
 
         '400':
-          description: Yêu cầu thanh toán không hợp lệ
+          description: Chuyến đi không sử dụng phương thức thanh toán tiền mặt hoặc chưa đủ điều kiện xác nhận
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
 
-        '502':
-          description: Nhà cung cấp thanh toán không phản hồi
+        '403':
+          description: Driver không có quyền xác nhận thanh toán của chuyến đi này
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '404':
+          description: Không tìm thấy chuyến đi
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '500':
+          description: Không thể cập nhật trạng thái thanh toán
           content:
             application/json:
               schema:
@@ -60,28 +75,16 @@ components:
 
   schemas:
 
-    PaymentRequest:
-      type: object
-      properties:
-        tripId:
-          type: integer
-          format: int64
-        paymentMethod:
-          type: string
-          enum:
-            - cash
-            - electronic
-      required:
-        - tripId
-        - paymentMethod
-
     Payment:
       type: object
       properties:
-        id:
+        rideId:
           type: integer
           format: int64
-        tripId:
+        customerId:
+          type: integer
+          format: int64
+        driverId:
           type: integer
           format: int64
         amount:
@@ -92,17 +95,13 @@ components:
           enum:
             - cash
             - electronic
-        status:
+        paymentStatus:
           type: string
           enum:
             - pending
-            - processing
-            - successful
+            - success
             - failed
-        transactionCode:
-          type: string
-          nullable: true
-        paidAt:
+        confirmedAt:
           type: string
           format: date-time
           nullable: true
