@@ -1168,11 +1168,14 @@ Không
 
 **Tiền điều kiện**
 
+Customer đã đăng nhập vào hệ thống.
+Chuyến đi đã hoàn thành.
 Số tiền phải thanh toán của chuyến đi đã được xác định.
 
 **Hậu điều kiện**
 
-Giao dịch được ghi nhận với trạng thái phù hợp và Customer nhận được kết quả thanh toán.
+**Thành công:** Phương thức thanh toán và trạng thái giao dịch được ghi nhận; Customer nhận được kết quả thanh toán.
+**Không thành công:** Giao dịch không được xác nhận hoàn tất và hệ thống lưu trạng thái phù hợp.
 
 **Actor chính**
 
@@ -1181,19 +1184,40 @@ Customer
 **Actor phụ**
 
 Payment Provider
+Driver
 
 ### Basic flow
 
 | Customer | Hệ thống |
 |---|---|
-| **1.** Xem số tiền phải thanh toán | |
-| | **2.** Hiển thị số tiền và phương thức thanh toán |
-| **3.** Chọn phương thức thanh toán | |
-| | **4.** Xử lý phương thức thanh toán được lựa chọn |
-| | **5.** Gửi yêu cầu thanh toán điện tử đến Payment Provider |
-| | **6.** Tiếp nhận kết quả giao dịch |
-| | **7.** Cập nhật trạng thái thanh toán |
-| | **8.** Hiển thị kết quả thanh toán |
+| **1.** Chọn chức năng thanh toán cho chuyến đi. | | 
+| | **2.** Hiển thị số tiền phải thanh toán và các phương thức thanh toán. | |
+| **3.** Chọn phương thức thanh toán. | | 
+| | **4.** Kiểm tra phương thức thanh toán được lựa chọn. | 
+| **5.** Nếu Customer chọn **Tiền mặt**, thực hiện Subflow **S1 – Thanh toán tiền mặt**. Nếu Customer chọn **Thanh toán điện tử**, thực hiện Subflow **S2 – Thanh toán điện tử**. | 
+| | **6.** Cập nhật trạng thái giao dịch. |
+| | **7.** Lưu thông tin giao dịch. |
+| | **8.** Hiển thị kết quả thanh toán cho Customer. | 
+| **9.** Xem kết quả thanh toán. | |
+
+### Subflow 
+#### S1 – Thanh toán tiền mặt
+| Driver | Hệ thống |
+| --- | --- |
+| | **S1.1.** Ghi nhận phương thức thanh toán là **Tiền mặt**. | 
+| **S1.2.** Xác nhận đã nhận tiền từ Customer. | |
+| | **S1.3.** Ghi nhận kết quả thanh toán tiền mặt thành công. |
+| | **S1.4.** Quay lại bước **6** của Basic Flow. |
+
+#### S2 – Thanh toán điện tử 
+| Customer | Hệ thống | 
+| --- | --- | 
+| | **S2.1.** Ghi nhận phương thức thanh toán là **Thanh toán điện tử**. | 
+| **S2.2.** Xác nhận thực hiện thanh toán điện tử. | | 
+| | **S2.3.** Gửi yêu cầu thanh toán đến Payment Provider. | | 
+| **S2.4.** Tiếp nhận kết quả giao dịch từ Payment Provider. | | 
+| **S2.5.** Nếu giao dịch thành công, ghi nhận kết quả thanh toán thành công. | | 
+| **S2.6.** Quay lại bước **6** của Basic Flow. |
 
 ### Alternative flow
 
@@ -1204,13 +1228,12 @@ Payment Provider
 
 ### Exception flow
 
-**5.1 Thanh toán điện tử thất bại:**
+#### 6.1. Không thể cập nhật hoặc lưu trạng thái giao dịch
 
-1. Payment Provider trả về kết quả thất bại.
-2. Hệ thống cập nhật trạng thái giao dịch là thất bại.
-3. Hệ thống thông báo cho Customer.
-4. Customer có thể thực hiện lại thanh toán theo chính sách doanh nghiệp.
-5. Kết thúc use case.
+1. Hệ thống ghi nhận lỗi xử lý giao dịch.
+2. Hệ thống không xác nhận giao dịch đã hoàn tất.
+3. Hệ thống thông báo thanh toán chưa được ghi nhận thành công.
+4. Kết thúc use case.
 
 ---
 
