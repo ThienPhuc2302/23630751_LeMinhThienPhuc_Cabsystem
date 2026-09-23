@@ -125,83 +125,82 @@ Functional Requirements (FR) được phân rã từ **21 Business Requirements 
 |:---:|:---:|:---|
 | **FR08** | BR04 | Hệ thống cho phép Customer nhập điểm đón, điểm đến và lựa chọn loại xe hoặc dịch vụ. |
 | **FR09** | BR04 | Hệ thống kiểm tra thông tin đặt xe và hiển thị thông tin yêu cầu để Customer xác nhận. |
-| **FR10** | BR05 | Hệ thống tạo mã yêu cầu và quản lý trạng thái đặt xe trong quá trình xử lý. |
-| **FR11** | BR05 | Hệ thống cho phép Customer hủy yêu cầu đặt xe hoặc chuyến đi khi trạng thái hiện tại đáp ứng điều kiện hủy. |
+| **FR10** | BR05 | Hệ thống tạo mã yêu cầu, quản lý trạng thái đặt xe trong quá trình xử lý và cho phép Customer hủy yêu cầu đặt xe hoặc chuyến đi khi đáp ứng điều kiện hủy. |
 
 ## 6.5. Tìm và phân công tài xế
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR12** | BR06 | Hệ thống tự động tìm kiếm các Driver đang có khả năng nhận chuyến dựa trên trạng thái và vị trí. |
-| **FR13** | BR06 | Hệ thống áp dụng các tiêu chí vận hành để lựa chọn và ưu tiên Driver phù hợp. |
-| **FR14** | BR07 | Hệ thống gửi yêu cầu nhận chuyến và ghi nhận kết quả chấp nhận, từ chối hoặc không phản hồi của Driver. |
-| **FR15** | BR07 | Hệ thống tự động chuyển sang Driver phù hợp tiếp theo khi Driver được đề xuất từ chối hoặc không phản hồi trong thời gian quy định. |
-| **FR16** | BR08 | Hệ thống thông báo cho Customer khi không còn Driver phù hợp để thực hiện chuyến. |
+| **FR11** | BR06 | Hệ thống tự động tìm kiếm các Driver đang có khả năng nhận chuyến dựa trên trạng thái và vị trí. |
+| **FR12** | BR06 | Hệ thống áp dụng các tiêu chí vận hành để lựa chọn và ưu tiên Driver phù hợp. |
+| **FR13** | BR07 | Hệ thống gửi yêu cầu nhận chuyến và ghi nhận kết quả chấp nhận, từ chối hoặc không phản hồi của Driver. |
+| **FR14** | BR07 | Hệ thống tự động chuyển sang Driver phù hợp tiếp theo khi Driver được đề xuất từ chối hoặc không phản hồi trong thời gian quy định. |
+| **FR15** | BR08 | Hệ thống thông báo cho Customer khi không còn Driver phù hợp để thực hiện chuyến. |
 
 ## 6.6. Quản lý & theo dõi chuyến
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR17** | BR09 | Hệ thống tạo chuyến đi và liên kết chuyến với Customer, Driver và phương tiện sau khi Driver nhận chuyến. | 
-| **FR18** | BR10 | Hệ thống cho phép Driver cập nhật các trạng thái chính: đã đến điểm đón, đã đón khách, đang di chuyển và hoàn thành. | 
-| **FR19** | BR10 | Hệ thống hiển thị trạng thái và thông tin Driver của chuyến đi cho Customer. | 
-| **FR20** | BR11 | Hệ thống tiếp nhận và cập nhật thông tin vị trí của Driver trong quá trình thực hiện chuyến. | 
-| **FR21** | BR11 | Hệ thống hiển thị vị trí Driver và thời gian dự kiến đến cho Customer dựa trên dữ liệu vị trí. |
+| **FR16** | BR09 | Hệ thống tạo chuyến đi và liên kết chuyến với Customer, Driver và phương tiện sau khi Driver nhận chuyến. | 
+| **FR17** | BR10 | Hệ thống cho phép Driver cập nhật các trạng thái chính: đã đến điểm đón, đã đón khách, đang di chuyển và hoàn thành. | 
+| **FR18** | BR10 | Hệ thống hiển thị trạng thái và thông tin Driver của chuyến đi cho Customer. | 
+| **FR19** | BR11 | Hệ thống tiếp nhận và cập nhật thông tin vị trí của Driver trong quá trình thực hiện chuyến. | 
+| **FR20** | BR11 | Hệ thống hiển thị vị trí Driver và thời gian dự kiến đến cho Customer dựa trên dữ liệu vị trí. |
 
 ## 6.7. Tính cước & thanh toán
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR22** | BR12 | Hệ thống tính và lưu số tiền phải thanh toán dựa trên loại dịch vụ và thông tin chuyến đi. | 
-| **FR23** | BR13 | Hệ thống cho phép Customer lựa chọn thanh toán bằng tiền mặt hoặc thanh toán điện tử. | 
-| **FR24** | BR13 | Hệ thống gửi yêu cầu thanh toán điện tử đến nhà cung cấp thanh toán bên ngoài và tiếp nhận kết quả giao dịch. | 
-| **FR25** | BR14 | Hệ thống cập nhật trạng thái giao dịch và thông báo kết quả thanh toán cho Customer. | 
-| **FR26** | BR14 | Hệ thống hỗ trợ thực hiện lại thanh toán khi giao dịch điện tử thất bại theo chính sách doanh nghiệp. |
+| **FR21** | BR12 | Hệ thống tính và lưu số tiền phải thanh toán dựa trên loại dịch vụ và thông tin chuyến đi. | 
+| **FR22** | BR13 | Hệ thống cho phép Customer lựa chọn thanh toán bằng tiền mặt hoặc thanh toán điện tử. | 
+| **FR23** | BR13 | Hệ thống gửi yêu cầu thanh toán điện tử đến nhà cung cấp thanh toán bên ngoài và tiếp nhận kết quả giao dịch. | 
+| **FR24** | BR14 | Hệ thống cập nhật trạng thái giao dịch và thông báo kết quả thanh toán cho Customer. | 
+| **FR25** | BR14 | Hệ thống hỗ trợ thực hiện lại thanh toán khi giao dịch điện tử thất bại theo chính sách doanh nghiệp. |
 
 ## 6.8. Thông báo
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR27** | BR15 | Hệ thống gửi thông báo cho Customer về các sự kiện chính: tiếp nhận yêu cầu, nhận chuyến, Driver đến, hoàn thành chuyến và kết quả thanh toán. | 
-| **FR28** | BR15 | Hệ thống gửi thông báo cho Driver về chuyến mới và các thay đổi quan trọng liên quan đến chuyến. |
+| **FR26** | BR15 | Hệ thống gửi thông báo cho Customer về các sự kiện chính: tiếp nhận yêu cầu, nhận chuyến, Driver đến, hoàn thành chuyến và kết quả thanh toán. | 
+| **FR27** | BR15 | Hệ thống gửi thông báo cho Driver về chuyến mới và các thay đổi quan trọng liên quan đến chuyến. |
 
 ## 6.9. Quản lý vận hành
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR29** | BR16 | Hệ thống cung cấp chức năng tra cứu và quản lý khách hàng, tài xế và phương tiện cho Nhân viên vận hành. | 
-| **FR30** | BR16 | Hệ thống hiển thị danh sách và trạng thái các chuyến đang diễn ra cho Nhân viên vận hành. | 
-| **FR31** | BR17 | Hệ thống cho phép Nhân viên vận hành tra cứu các chuyến có lỗi hoặc bất thường. | 
-| **FR32** | BR17 | Hệ thống cho phép Nhân viên vận hành xử lý hoặc cập nhật trạng thái chuyến theo quyền được cấp. | 
-| **FR33** | BR17 | Hệ thống cho phép Nhân viên vận hành tra cứu thông tin và lịch sử giao dịch. |
+| **FR28** | BR16 | Hệ thống cung cấp chức năng tra cứu và quản lý khách hàng, tài xế và phương tiện cho Nhân viên vận hành. | 
+| **FR29** | BR16 | Hệ thống hiển thị danh sách và trạng thái các chuyến đang diễn ra cho Nhân viên vận hành. | 
+| **FR30** | BR17 | Hệ thống cho phép Nhân viên vận hành tra cứu các chuyến có lỗi hoặc bất thường. | 
+| **FR31** | BR17 | Hệ thống cho phép Nhân viên vận hành xử lý hoặc cập nhật trạng thái chuyến theo quyền được cấp. | 
+| **FR32** | BR17 | Hệ thống cho phép Nhân viên vận hành tra cứu thông tin và lịch sử giao dịch. |
 
 ## 6.10. Lịch sử & đánh giá
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR34** | BR18 | Hệ thống lưu trữ và cho phép Customer tra cứu lịch sử chuyến đi. | 
-| **FR35** | BR18 | Hệ thống hiển thị chi tiết chuyến đi, số tiền và trạng thái thanh toán. | 
-| **FR36** | BR18 | Hệ thống cho phép Customer đánh giá Driver sau khi chuyến hoàn thành và lưu kết quả đánh giá. |
+| **FR33** | BR18 | Hệ thống lưu trữ và cho phép Customer tra cứu lịch sử chuyến đi. | 
+| **FR34** | BR18 | Hệ thống hiển thị chi tiết chuyến đi, số tiền và trạng thái thanh toán. | 
+| **FR35** | BR18 | Hệ thống cho phép Customer đánh giá Driver sau khi chuyến hoàn thành và lưu kết quả đánh giá. |
 
 ## 6.11. Báo cáo
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR37** | BR19 | Hệ thống cung cấp báo cáo về số lượng chuyến, doanh thu, tỷ lệ hoàn thành, tỷ lệ hủy và hiệu quả hoạt động của Driver theo khoảng thời gian và tiêu chí được lựa chọn. |
+| **FR36** | BR19 | Hệ thống cung cấp báo cáo về số lượng chuyến, doanh thu, tỷ lệ hoàn thành, tỷ lệ hủy và hiệu quả hoạt động của Driver theo khoảng thời gian và tiêu chí được lựa chọn. |
 
 ## 6.12. Bảo mật & phân quyền
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR38** | BR20 | Hệ thống xác thực người dùng và phân quyền truy cập theo vai trò Customer, Driver và Nhân viên vận hành. | 
-| **FR39** | BR20 | Hệ thống ngăn người dùng thực hiện các chức năng ngoài phạm vi quyền được cấp. | 
-| **FR40** | BR20 | Hệ thống bảo vệ thông tin cá nhân, phương tiện, vị trí và dữ liệu giao dịch khỏi truy cập trái phép. |
+| **FR37** | BR20 | Hệ thống xác thực người dùng và phân quyền truy cập theo vai trò Customer, Driver và Nhân viên vận hành. | 
+| **FR38** | BR20 | Hệ thống ngăn người dùng thực hiện các chức năng ngoài phạm vi quyền được cấp. | 
+| **FR39** | BR20 | Hệ thống bảo vệ thông tin cá nhân, phương tiện, vị trí và dữ liệu giao dịch khỏi truy cập trái phép. |
 
 ## 6.13. Audit Log
 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
-| **FR41** | BR21 | Hệ thống ghi nhận các thao tác quan trọng của người dùng và cho phép người dùng có quyền tra cứu lịch sử thao tác phục vụ kiểm tra và xử lý sự cố. |
+| **FR40** | BR21 | Hệ thống ghi nhận các thao tác quan trọng của người dùng và cho phép người dùng có quyền tra cứu lịch sử thao tác phục vụ kiểm tra và xử lý sự cố. |
 
 ## 7. Acceptance Criteria
 
@@ -295,7 +294,7 @@ Functional Requirements (FR) được phân rã từ **21 Business Requirements 
 | AC10.1 | **Given** Customer xác nhận yêu cầu hợp lệ, **When** hệ thống tạo yêu cầu, **Then** hệ thống tạo một mã yêu cầu duy nhất. |
 | AC10.2 | **Given** yêu cầu đã được tạo, **Then** hệ thống lưu và quản lý trạng thái của yêu cầu trong suốt quá trình xử lý. |
 | AC10.3 | **Given** trạng thái yêu cầu thay đổi, **Then** hệ thống cập nhật trạng thái mới tương ứng. |
-
+| AC10.4 | **Given** yêu cầu đặt xe hoặc chuyến đi không đủ điều kiện hủy, **When** Customer yêu cầu hủy, **Then** hệ thống từ chối thao tác và thông báo lý do không thể hủy. |
 ---
 
 ## 7.5. Tìm kiếm và phân công tài xế
