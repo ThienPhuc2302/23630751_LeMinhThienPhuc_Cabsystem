@@ -152,10 +152,10 @@ Functional Requirements (FR) được phân rã từ **21 Business Requirements 
 | FR ID | BR ID | Functional Requirement |
 |:---:|:---:|:---|
 | **FR21** | BR12 | Hệ thống tính và lưu số tiền phải thanh toán dựa trên loại dịch vụ và thông tin chuyến đi. | 
-| **FR22** | BR13 | Hệ thống cho phép Customer lựa chọn thanh toán bằng tiền mặt hoặc thanh toán điện tử. | 
-| **FR23** | BR13 | Hệ thống gửi yêu cầu thanh toán điện tử đến nhà cung cấp thanh toán bên ngoài và tiếp nhận kết quả giao dịch. | 
-| **FR24** | BR14 | Hệ thống cập nhật trạng thái giao dịch và thông báo kết quả thanh toán cho Customer. | 
-| **FR25** | BR14 | Hệ thống hỗ trợ thực hiện lại thanh toán khi giao dịch điện tử thất bại theo chính sách doanh nghiệp. |
+| **FR22** | BR13 | Hệ thống cho phép Customer lựa chọn phương thức thanh toán bằng tiền mặt hoặc thanh toán điện tử và lưu phương thức được lựa chọn. |
+| **FR23** | BR13 | Đối với thanh toán tiền mặt, hệ thống cho phép Driver xác nhận đã nhận tiền từ Customer và ghi nhận kết quả thanh toán. |
+| **FR24** | BR13 | Đối với thanh toán điện tử, hệ thống gửi yêu cầu thanh toán đến Payment Provider, tiếp nhận kết quả và cập nhật trạng thái giao dịch. |
+| **FR25** | BR14 | Hệ thống thông báo kết quả thanh toán cho Customer và cho phép thực hiện lại thanh toán điện tử khi giao dịch thất bại. |
 
 ## 6.8. Thông báo
 
@@ -393,30 +393,30 @@ Functional Requirements (FR) được phân rã từ **21 Business Requirements 
 
 | AC ID | Acceptance Criteria |
 |:---:|:---|
-| AC22.1 | **Given** Customer thực hiện thanh toán, **When** lựa chọn phương thức thanh toán, **Then** hệ thống cho phép lựa chọn tiền mặt hoặc thanh toán điện tử. |
+| AC22.1 | **Given** Customer thực hiện thanh toán, **When** lựa chọn phương thức thanh toán, **Then** hệ thống cho phép lựa chọn tiền mặt hoặc thanh toán điện tử. | 
 | AC22.2 | **Then** hệ thống lưu phương thức thanh toán được Customer lựa chọn. |
 
-### FR23 – Thực hiện thanh toán điện tử
+### FR23 – Thanh toán bằng tiền mặt
 
 | AC ID | Acceptance Criteria |
 |:---:|:---|
-| AC23.1 | **Given** Customer chọn thanh toán điện tử, **When** thực hiện thanh toán, **Then** hệ thống gửi yêu cầu thanh toán đến nhà cung cấp thanh toán bên ngoài. |
-| AC23.2 | **Given** nhà cung cấp thanh toán trả kết quả, **Then** hệ thống tiếp nhận và lưu kết quả thanh toán. |
+| AC23.1 | **Given** Customer chọn thanh toán bằng tiền mặt, **When** Driver nhận tiền từ Customer, **Then** hệ thống cho phép Driver xác nhận đã nhận tiền. | 
+| AC23.2 | **Given** Driver xác nhận đã nhận tiền, **Then** hệ thống ghi nhận kết quả thanh toán tiền mặt thành công. |
 
-### FR24 – Cập nhật trạng thái giao dịch và thông báo kết quả
-
-| AC ID | Acceptance Criteria |
-|:---:|:---|
-| AC24.1 | **Given** hệ thống nhận được kết quả thanh toán, **Then** hệ thống cập nhật trạng thái giao dịch tương ứng. |
-| AC24.2 | **Then** hệ thống thông báo kết quả thanh toán cho Customer. |
-| AC24.3 | **Given** thanh toán thất bại, **Then** trạng thái giao dịch được ghi nhận là thất bại. |
-
-### FR25 – Thử lại thanh toán điện tử
+### FR24 – Thực hiện thanh toán điện tử
 
 | AC ID | Acceptance Criteria |
 |:---:|:---|
-| AC25.1 | **Given** giao dịch thanh toán điện tử thất bại, **When** Customer thực hiện thử lại theo chính sách, **Then** hệ thống cho phép gửi lại yêu cầu thanh toán. |
-| AC25.2 | **Then** hệ thống ghi nhận kết quả của lần thanh toán thử lại. |
+| AC24.1 | **Given** Customer chọn thanh toán điện tử, **When** thực hiện thanh toán, **Then** hệ thống gửi yêu cầu thanh toán đến nhà cung cấp thanh toán bên ngoài. | 
+| AC24.2 | **Given** nhà cung cấp thanh toán trả kết quả, **Then** hệ thống tiếp nhận kết quả và cập nhật trạng thái giao dịch tương ứng. | 
+| AC24.3 | **Given** thanh toán điện tử thất bại, **Then** trạng thái giao dịch được ghi nhận là thất bại. |
+
+### FR25 – Thông báo kết quả và thử lại thanh toán điện tử
+
+| AC ID | Acceptance Criteria |
+|:---:|:---|
+| AC25.1 | **Given** giao dịch đã có kết quả, **When** hệ thống cập nhật trạng thái giao dịch, **Then** hệ thống thông báo kết quả thanh toán cho Customer. | 
+| AC25.2 | **Given** giao dịch thanh toán điện tử thất bại, **When** Customer thực hiện thử lại theo chính sách, **Then** hệ thống cho phép gửi lại yêu cầu thanh toán và ghi nhận kết quả mới. |
 
 ---
 
