@@ -1,7 +1,7 @@
 openapi: 3.0.0
 
 info:
-  title: FR10 - Quản lý trạng thái đặt xe
+  title: FR10 - Quản lý trạng thái đặt xe và hủy chuyến
   version: 1.0.0
 
 servers:
@@ -75,6 +75,66 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /rides/{rideId}/cancel:
+    patch:
+      summary: Hủy yêu cầu đặt xe hoặc chuyến đi
+      operationId: huyYeuCauDatXe
+      tags:
+        - Ride Booking
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: rideId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelRideRequest'
+
+      responses:
+        '200':
+          description: Hủy yêu cầu hoặc chuyến đi thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ride'
+
+        '400':
+          description: Yêu cầu hoặc chuyến đi không đủ điều kiện hủy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '403':
+          description: Customer không có quyền hủy yêu cầu hoặc chuyến đi này
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '404':
+          description: Không tìm thấy yêu cầu hoặc chuyến đi
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '500':
+          description: Không thể cập nhật trạng thái hủy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
 components:
 
   securitySchemes:
@@ -104,6 +164,12 @@ components:
         - pickupLocation
         - destination
         - serviceType
+
+    CancelRideRequest:
+      type: object
+      properties:
+        reason:
+          type: string
 
     Ride:
       type: object
@@ -140,6 +206,13 @@ components:
             - completed
             - cancelled
             - failed
+        cancelReason:
+          type: string
+          nullable: true
+        cancelledAt:
+          type: string
+          format: date-time
+          nullable: true
 
     Error:
       type: object
