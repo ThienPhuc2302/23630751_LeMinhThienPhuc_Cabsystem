@@ -1,7 +1,7 @@
 openapi: 3.0.0
 
 info:
-  title: FR24 - Cập nhật trạng thái thanh toán
+  title: FR24 - Thực hiện thanh toán điện tử
   version: 1.0.0
 
 servers:
@@ -12,17 +12,17 @@ tags:
 
 paths:
 
-  /payments/{paymentId}:
-    get:
-      summary: Xem trạng thái và kết quả thanh toán
-      operationId: xemKetQuaThanhToan
+  /rides/{rideId}/electronic-payment:
+    post:
+      summary: Thực hiện thanh toán điện tử cho chuyến đi
+      operationId: thucHienThanhToanDienTu
       tags:
         - Payment
       security:
         - bearerAuth: []
 
       parameters:
-        - name: paymentId
+        - name: rideId
           in: path
           required: true
           schema:
@@ -31,14 +31,35 @@ paths:
 
       responses:
         '200':
-          description: Trạng thái giao dịch
+          description: Thanh toán điện tử được xử lý thành công
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Payment'
 
+        '400':
+          description: Chuyến đi không sử dụng phương thức thanh toán điện tử hoặc dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '403':
+          description: Customer không có quyền thực hiện thanh toán cho chuyến đi này
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
         '404':
-          description: Không tìm thấy giao dịch
+          description: Không tìm thấy chuyến đi
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '502':
+          description: Không nhận được kết quả hợp lệ từ nhà cung cấp thanh toán
           content:
             application/json:
               schema:
@@ -57,10 +78,10 @@ components:
     Payment:
       type: object
       properties:
-        id:
+        rideId:
           type: integer
           format: int64
-        tripId:
+        customerId:
           type: integer
           format: int64
         amount:
@@ -71,14 +92,13 @@ components:
           enum:
             - cash
             - electronic
-        status:
+        paymentStatus:
           type: string
           enum:
             - pending
-            - processing
-            - successful
+            - success
             - failed
-        transactionCode:
+        providerTransactionId:
           type: string
           nullable: true
         paidAt:
