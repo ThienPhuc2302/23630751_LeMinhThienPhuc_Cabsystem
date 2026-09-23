@@ -901,6 +901,7 @@ Map/Location Provider
 
 ---
 
+
 ## UC07 – Hủy yêu cầu / chuyến đi
 
 ### Hủy yêu cầu / chuyến đi
@@ -909,9 +910,13 @@ Map/Location Provider
 
 Customer đã đăng nhập và có yêu cầu đặt xe hoặc chuyến đi thuộc quyền của mình.
 
+Yêu cầu đặt xe hoặc chuyến đi chưa ở trạng thái hoàn thành hoặc đã hủy.
+
 **Hậu điều kiện**
 
 Yêu cầu đặt xe hoặc chuyến đi được cập nhật sang trạng thái hủy nếu đáp ứng điều kiện hủy.
+
+Nếu hủy không thành công, trạng thái hiện tại của yêu cầu đặt xe hoặc chuyến đi được giữ nguyên.
 
 **Actor chính**
 
@@ -926,29 +931,37 @@ Không
 | Customer | Hệ thống |
 |---|---|
 | **1.** Chọn yêu cầu đặt xe hoặc chuyến đi cần hủy | |
-| | **2.** Hiển thị thông tin và trạng thái hiện tại |
+| | **2.** Hiển thị thông tin và trạng thái hiện tại của yêu cầu/chuyến đi |
 | **3.** Chọn chức năng “Hủy” | |
-| | **4.** Kiểm tra điều kiện hủy |
+| | **4.** Kiểm tra trạng thái và điều kiện hủy |
 | | **5.** Hiển thị thông báo xác nhận hủy |
 | **6.** Xác nhận hủy | |
-| | **7.** Cập nhật trạng thái hủy |
+| | **7.** Cập nhật trạng thái yêu cầu/chuyến đi thành “Đã hủy” |
 | | **8.** Lưu thông tin hủy |
 | | **9.** Hiển thị thông báo hủy thành công |
 
 ### Alternative flow
 
-**3.1 Yêu cầu/chuyến đi không thể hủy:**
+**4.1 Yêu cầu/chuyến đi không đủ điều kiện hủy:**
 
-1. Hệ thống hiển thị thông báo không thể hủy yêu cầu/chuyến đi.
-2. Quay lại bước **3**.
-
-### Exception flow
+1. Hệ thống thông báo yêu cầu/chuyến đi không thể hủy ở trạng thái hiện tại.
+2. Hệ thống giữ nguyên trạng thái yêu cầu/chuyến đi.
+3. Kết thúc use case.
 
 **6.1 Customer không xác nhận hủy:**
 
 1. Customer chọn “Quay lại”.
 2. Hệ thống giữ nguyên trạng thái yêu cầu/chuyến đi.
 3. Kết thúc use case.
+
+### Exception flow
+
+**7.1 Không thể cập nhật hoặc lưu trạng thái hủy:**
+
+1. Hệ thống ghi nhận lỗi xử lý.
+2. Hệ thống không thay đổi trạng thái yêu cầu/chuyến đi.
+3. Hệ thống thông báo hủy không thành công.
+4. Kết thúc use case.
 
 ---
 
